@@ -75,30 +75,86 @@
                 
                 <!-- Logo & Web Link -->
                 <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('dashboard')">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-600 via-indigo-600 to-amber-500 p-0.5 shadow-md flex items-center justify-center">
-                        <div class="w-full h-full bg-slate-900 rounded-[10px] flex items-center justify-center">
-                            <svg class="w-6 h-6" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="100" cy="100" r="82" stroke="url(#ringGrad)" stroke-width="14" stroke-dasharray="420 80"/>
-                                <path d="M100 22 L132 100 L100 178 L80 100 Z" fill="url(#needleRight)"/>
-                                <path d="M100 22 L68 100 L100 178 L120 100 Z" fill="url(#needleLeft)"/>
-                                <circle cx="100" cy="100" r="12" fill="#FFFFFF"/>
-                                <defs>
-                                    <linearGradient id="ringGrad" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
-                                        <stop offset="0%" stop-color="#38BDF8"/>
-                                        <stop offset="50%" stop-color="#818CF8"/>
-                                        <stop offset="100%" stop-color="#F59E0B"/>
-                                    </linearGradient>
-                                    <linearGradient id="needleRight" x1="100" y1="22" x2="132" y2="178" gradientUnits="userSpaceOnUse">
-                                        <stop offset="0%" stop-color="#F97316"/>
-                                        <stop offset="100%" stop-color="#D97706"/>
-                                    </linearGradient>
-                                    <linearGradient id="needleLeft" x1="100" y1="22" x2="68" y2="178" gradientUnits="userSpaceOnUse">
-                                        <stop offset="0%" stop-color="#38BDF8"/>
-                                        <stop offset="100%" stop-color="#1E3A8A"/>
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                        </div>
+                    <div class="w-11 h-11 flex items-center justify-center relative">
+                        <!-- High-Fidelity Travora Compass Emblem Vector -->
+                        <svg class="w-11 h-11 drop-shadow-sm hover:scale-105 transition-transform" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Gradient Definitions -->
+                            <defs>
+                                <!-- Top-Right Ring Arc (Orange / Coral Gradient) -->
+                                <linearGradient id="travoraTopArc" x1="120" y1="30" x2="270" y2="180" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#EA580C"/>
+                                    <stop offset="45%" stop-color="#F97316"/>
+                                    <stop offset="85%" stop-color="#FB923C"/>
+                                    <stop offset="100%" stop-color="#FDBA74"/>
+                                </linearGradient>
+
+                                <!-- Bottom-Left Ring Arc (Indigo / Deep Purple Gradient) -->
+                                <linearGradient id="travoraBottomArc" x1="40" y1="120" x2="190" y2="280" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#2E1065"/>
+                                    <stop offset="35%" stop-color="#312E81"/>
+                                    <stop offset="70%" stop-color="#3730A3"/>
+                                    <stop offset="100%" stop-color="#4F46E5"/>
+                                </linearGradient>
+
+                                <!-- Top-Right Needle Facet (Warm Amber/Orange) -->
+                                <linearGradient id="needleFacetWarm" x1="150" y1="150" x2="245" y2="55" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#F97316"/>
+                                    <stop offset="60%" stop-color="#EA580C"/>
+                                    <stop offset="100%" stop-color="#C2410C"/>
+                                </linearGradient>
+
+                                <!-- Top-Left Needle Facet (Deep Navy/Indigo) -->
+                                <linearGradient id="needleFacetDarkTop" x1="150" y1="150" x2="245" y2="55" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#312E81"/>
+                                    <stop offset="50%" stop-color="#1E1B4B"/>
+                                    <stop offset="100%" stop-color="#0F172A"/>
+                                </linearGradient>
+
+                                <!-- Bottom-Left Needle Facet (Deep Indigo Shadow) -->
+                                <linearGradient id="needleFacetDarkBot" x1="150" y1="150" x2="55" y2="245" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#3730A3"/>
+                                    <stop offset="60%" stop-color="#1E1B4B"/>
+                                    <stop offset="100%" stop-color="#0F172A"/>
+                                </linearGradient>
+
+                                <!-- Bottom-Right Needle Facet (Muted Slate/Purple) -->
+                                <linearGradient id="needleFacetMidBot" x1="150" y1="150" x2="55" y2="245" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#4338CA"/>
+                                    <stop offset="50%" stop-color="#312E81"/>
+                                    <stop offset="100%" stop-color="#1E1B4B"/>
+                                </linearGradient>
+                            </defs>
+
+                            <!-- Outer Swirling Orbit Arcs -->
+                            <!-- Top Right Swirling Arc -->
+                            <path d="M 125 45 C 190 35 255 85 260 160 C 263 205 240 240 215 255 C 228 235 238 195 230 160 C 220 110 175 68 125 45 Z" fill="url(#travoraTopArc)"/>
+                            <!-- Inner Thin Accent Arc Top -->
+                            <path d="M 140 38 C 195 36 248 76 254 135 C 248 88 202 50 140 38 Z" fill="#FB923C" opacity="0.85"/>
+
+                            <!-- Bottom Left Swirling Arc -->
+                            <path d="M 175 255 C 110 265 45 215 40 140 C 37 95 60 60 85 45 C 72 65 62 105 70 140 C 80 190 125 232 175 255 Z" fill="url(#travoraBottomArc)"/>
+                            <!-- Inner Thin Accent Arc Bottom -->
+                            <path d="M 160 262 C 105 264 52 224 46 165 C 52 212 98 250 160 262 Z" fill="#6366F1" opacity="0.85"/>
+
+                            <!-- Main Compass Needle (Angled at 45 Degrees) -->
+                            <!-- 1. Top Right Upper Warm Half -->
+                            <path d="M 150 150 L 195 105 L 255 45 L 150 150 Z" fill="url(#needleFacetWarm)"/>
+                            <!-- 2. Top Right Lower Dark Half -->
+                            <path d="M 150 150 L 105 195 L 55 245 L 150 150 Z" fill="url(#needleFacetDarkBot)"/>
+                            <!-- 3. Top Left Dark Half -->
+                            <path d="M 150 150 L 105 195 L 255 45 L 150 150 Z" fill="url(#needleFacetDarkTop)"/>
+                            <!-- 4. Bottom Right Mid Dark Half -->
+                            <path d="M 150 150 L 195 105 L 55 245 L 150 150 Z" fill="url(#needleFacetMidBot)"/>
+
+                            <!-- Needle Facet Polygon Lines for Depth -->
+                            <polygon points="150,150 105,195 55,245" fill="#1E1B4B" opacity="0.9"/>
+                            <polygon points="150,150 195,105 255,45" fill="url(#needleFacetWarm)"/>
+                            <polygon points="150,150 105,195 255,45" fill="#0F172A" opacity="0.95"/>
+                            <polygon points="150,150 195,105 55,245" fill="#312E81" opacity="0.9"/>
+
+                            <!-- Center White Pivot Dot -->
+                            <circle cx="150" cy="150" r="14" fill="#FFFFFF" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.3))"/>
+                        </svg>
                     </div>
                     <div>
                         <div class="flex items-center gap-2">
