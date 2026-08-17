@@ -689,18 +689,18 @@
                             </button>
                         </div>
 
-                        <!-- Payment Methods -->
+                        <!-- Payment Methods (Streamlined to Card and FPX) -->
                         <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Select Payment Method</label>
-                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <div class="grid grid-cols-2 gap-3">
                                 <button type="button" onclick="selectPaymentMethod('card')" id="payMethod-card" class="p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-center font-bold text-xs transition flex flex-col items-center gap-2 text-emerald-700 dark:text-emerald-300">
                                     <i class="fa-solid fa-credit-card text-xl"></i> Credit / Debit
                                 </button>
                                 <button type="button" onclick="selectPaymentMethod('fpx')" id="payMethod-fpx" class="p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 text-center font-bold text-xs transition flex flex-col items-center gap-2 text-slate-600 dark:text-slate-300">
                                     <i class="fa-solid fa-building-columns text-xl"></i> FPX Online
                                 </button>
+                            </div>
                         </div>
-                     </div>
 
                         <!-- Payment Information Fields -->
                         <div id="cardFields" class="space-y-4">
@@ -949,7 +949,7 @@
         </div>
     </div>
 
-    <!-- MODAL 2: BOOKING CONFIRMATION MODAL (CONFIRM OR KEEP BROWSING) -->
+    <!-- MODAL 2: BOOKING CONFIRMATION MODAL -->
     <div id="bookingConfirmModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-md w-full p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-2xl relative space-y-4">
             <button onclick="closeBookingConfirmModal()" class="absolute right-4 top-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
@@ -2063,7 +2063,7 @@
         // PAYMENTS ENGINE
         function selectPaymentMethod(method) {
             selectedPaymentMethod = method;
-            ['card', 'fpx', 'ewallet', 'qr'].forEach(m => {
+            ['card', 'fpx'].forEach(m => {
                 const btn = document.getElementById(`payMethod-${m}`);
                 if (btn) {
                     btn.className = 'p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 text-center font-bold text-xs transition flex flex-col items-center gap-2 text-slate-600 dark:text-slate-300';
