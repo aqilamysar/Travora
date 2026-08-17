@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="light">
 <head>
+    <!-- STREAMING_CHUNK:Configuring document metadata and third-party libraries... -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travora — Your Journey, Your Story</title>
@@ -39,12 +40,37 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- External Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .high-contrast {
+            filter: contrast(135%);
+        }
+        .large-text {
+            font-size: 115% !important;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(100,116,139,0.3);
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(100,116,139,0.5);
+        }
+    </style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col antialiased selection:bg-sky-500 selection:text-white">
 
     <!-- NAVIGATION BAR -->
+    <!-- STREAMING_CHUNK:Rendering main header navigation bar... -->
     <nav class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 gap-4">
@@ -84,6 +110,7 @@
                             </span>
                         </div>
                         <span class="text-[9px] font-bold text-slate-500 dark:text-slate-400 tracking-widest block -mt-0.5 uppercase">YOUR JOURNEY, YOUR STORY</span>
+                        <a href="https://www.travora.com" target="_blank" onclick="event.stopPropagation();" class="text-[10px] font-semibold text-sky-600 dark:text-sky-400 hover:underline flex items-center gap-1 mt-0.5"><i class="fa-solid fa-globe text-[9px]"></i>www.travora.com</a>
                     </div>
                 </div>
 
@@ -107,7 +134,7 @@
                         <option value="JPY">JPY (¥)</option>
                     </select>
 
-                    <!-- Language Selector Flag Dropdown -->
+                    <!-- Language Selector Flag Dropdown -
                     <div class="relative">
                         <button onclick="toggleLangDropdown()" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
                             <span id="navFlagIcon">🇲🇾</span>
@@ -120,7 +147,7 @@
                             <button onclick="selectNavLang('ja', '🇯🇵', 'JP')" class="w-full text-left px-3 py-1.5 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 text-slate-700 dark:text-slate-200"><span>🇯🇵</span> 日本語 (Japanese)</button>
                             <button onclick="selectNavLang('id', '🇮🇩', 'ID')" class="w-full text-left px-3 py-1.5 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 text-slate-700 dark:text-slate-200"><span>🇮🇩</span> Bahasa Indonesia</button>
                         </div>
-                    </div>
+                    </div>->
 
                     <!-- Theme Toggle -->
                     <button onclick="toggleDarkMode()" class="p-2 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition" title="Toggle Dark/Light Mode">
@@ -139,16 +166,17 @@
     </nav>
 
     <!-- SUB-NAVIGATION TABS BAR -->
+    <!-- STREAMING_CHUNK:Rendering sub-navigation tabs... -->
     <div class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-1 sm:gap-2 overflow-x-auto py-2 scrollbar-none">
             <button id="tabBtn-dashboard" onclick="switchTab('dashboard')" class="tab-btn active px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition bg-sky-50 dark:bg-sky-950/50 text-sky-600 dark:text-sky-400 border border-sky-200 dark:border-sky-800">
                 <i class="fa-solid fa-compass"></i> Overview
             </button>
             <button id="tabBtn-flights" onclick="switchTab('flights')" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
-                <i class="fa-solid fa-plane"></i> Flights Engine
+                <i class="fa-solid fa-plane"></i> Flights
             </button>
             <button id="tabBtn-hotels" onclick="switchTab('hotels')" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
-                <i class="fa-solid fa-hotel"></i> Hotels Search
+                <i class="fa-solid fa-hotel"></i> Hotels 
             </button>
             <button id="tabBtn-translations" onclick="switchTab('translations')" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
                 <i class="fa-solid fa-language"></i> Language Guide
@@ -166,9 +194,10 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full">
         
         <!-- PAGE 1: DASHBOARD -->
+        <!-- STREAMING_CHUNK:Rendering main dashboard banner... -->
         <div id="page-dashboard" class="space-y-6">
             
-            <!-- 1. WELCOME BANNER WITH COUNTDOWN -->
+            <!-- WELCOME BANNER WITH DEFAULT NO-USER STATE -->
             <div id="welcomeBanner" class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-sky-900 via-indigo-900 to-slate-900 text-white p-6 sm:p-8 shadow-xl border border-sky-800/40">
                 <div class="absolute right-0 top-0 bottom-0 opacity-10 pointer-events-none flex items-center pr-8">
                     <i class="fa-solid fa-plane-departure text-[180px]"></i>
@@ -178,18 +207,18 @@
                     <div class="space-y-2">
                         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/20 border border-sky-400/30 text-sky-300 text-xs font-semibold">
                             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                            Upcoming Adventure Status
+                            Trip Status
                         </div>
                         <h1 id="welcomeHeading" class="text-2xl sm:text-3xl font-extrabold tracking-tight">
-                            Welcome Back, <span id="welcomeUserName" class="text-sky-300">Alif</span>. Your trip to <span class="text-amber-300">Bali</span> is in <span id="daysCountText" class="text-emerald-300">14</span> days!
+                            Welcome to <span class="text-sky-300">Travora</span>. No trips planned yet—let’s find your next great getaway!
                         </h1>
                         <p id="welcomeSubtext" class="text-xs sm:text-sm text-slate-300 max-w-xl">
-                            Pack your bags! Everything is synced for your upcoming trip to Ngurah Rai Airport (DPS).
+                            Explore hundreds of flights and luxury stays for your next vacation.
                         </p>
                     </div>
 
-                    <!-- Countdown Box -->
-                    <div id="countdownBox" class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/15 flex items-center gap-3 sm:gap-4 shrink-0 shadow-lg">
+                    <!-- Countdown Box (Hidden by default for first-time user) -->
+                    <div id="countdownBox" class="hidden bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/15 flex items-center gap-3 sm:gap-4 shrink-0 shadow-lg">
                         <div class="text-center">
                             <span id="timerDays" class="text-2xl sm:text-3xl font-black font-mono text-emerald-400">14</span>
                             <span class="block text-[10px] uppercase font-bold tracking-wider text-slate-300">Days</span>
@@ -214,7 +243,7 @@
 
                 <!-- Interactive Demo State Toggle Button -->
                 <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400">
-                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-info text-sky-400"></i> Trip Countdown System active.</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-info text-sky-400"></i> First-Time User View Active.</span>
                     <button onclick="toggleTripState()" class="hover:text-amber-300 underline font-medium transition cursor-pointer">
                         (Toggle Demo State: Active Trip / New User)
                     </button>
@@ -269,6 +298,7 @@
         </div>
 
         <!-- PAGE 2: FLIGHTS SEARCH ENGINE -->
+        <!-- STREAMING_CHUNK:Rendering flight search form... -->
         <div id="page-flights" class="hidden space-y-6">
             <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-lg">
                 <h2 class="text-xl font-extrabold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
@@ -295,15 +325,15 @@
                             <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Where From?</label>
                             <div class="relative">
                                 <i class="fa-solid fa-plane-departure absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                                <input type="text" id="flightFrom" value="Kuala Lumpur (KUL)" required class="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium focus:ring-2 focus:ring-sky-500 outline-none">
+                                <input type="text" id="flightFrom" value="Kuala Lumpur Intl Airport (KUL)" required class="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium focus:ring-2 focus:ring-sky-500 outline-none" placeholder="City or Airport (e.g. KUL, HND)">
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Where To?</label>
+                            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Where To? </label>
                             <div class="relative">
                                 <i class="fa-solid fa-location-dot absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                                <input type="text" id="flightTo" value="Bali, Indonesia (DPS)" required class="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium focus:ring-2 focus:ring-sky-500 outline-none">
+                                <input type="text" id="flightTo" value="Ngurah Rai Airport, Bali (DPS)" required class="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium focus:ring-2 focus:ring-sky-500 outline-none" placeholder="Destination Airport (e.g. Tokyo HND, Bali DPS)">
                             </div>
                         </div>
 
@@ -369,7 +399,7 @@
             <!-- Flight Search Results List -->
             <div class="space-y-4">
                 <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center justify-between">
-                    <span>Available Flight Results</span>
+                    <span id="flightSearchTitle">Available Flights (KUL ➔ DPS)</span>
                     <span id="flightResultsCount" class="text-xs text-slate-500">Showing 3 options</span>
                 </h3>
 
@@ -380,6 +410,7 @@
         </div>
 
         <!-- PAGE 3: HOTELS SEARCH ENGINE -->
+        <!-- STREAMING_CHUNK:Rendering hotel search section... -->
         <div id="page-hotels" class="hidden space-y-6">
             <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-lg">
                 <h2 class="text-xl font-extrabold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
@@ -388,11 +419,30 @@
 
                 <form onsubmit="handleHotelSearch(event)" class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div>
+                        <div class="md:col-span-1">
                             <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Destination / Hotel Location</label>
                             <div class="relative">
-                                <i class="fa-solid fa-map-pin absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                                <input type="text" id="hotelLocation" value="Seminyak, Bali, Indonesia" required class="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium focus:ring-2 focus:ring-indigo-500 outline-none">
+                                <i class="fa-solid fa-map-pin absolute left-3 top-3.5 text-slate-400 text-xs z-10"></i>
+                                <input type="text" id="hotelLocation" value="Seminyak, Bali, Indonesia" list="popularHotelLocationsList" required class="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium focus:ring-2 focus:ring-indigo-500 outline-none">
+                                <datalist id="popularHotelLocationsList">
+                                    <option value="Seminyak, Bali, Indonesia">
+                                    <option value="Tokyo, Japan">
+                                    <option value="Kuala Lumpur, Malaysia">
+                                    <option value="Paris, France">
+                                    <option value="Singapore">
+                                    <option value="London, United Kingdom">
+                                    <option value="Penang, Malaysia">
+                                    <option value="Bangkok, Thailand">
+                                </datalist>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-1.5 mt-2">
+                                <span class="text-[10px] font-bold text-slate-400 uppercase mr-1">:</span>
+                                <button type="button" onclick="quickSelectHotelLoc('Bali, Indonesia')" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">Bali 🇮🇩</button>
+                                <button type="button" onclick="quickSelectHotelLoc('Tokyo, Japan')" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">Tokyo 🇯🇵</button>
+                                <button type="button" onclick="quickSelectHotelLoc('Kuala Lumpur, Malaysia')" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">KL 🇲🇾</button>
+                                <button type="button" onclick="quickSelectHotelLoc('Paris, France')" Quick Pickclass="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">Paris 🇫🇷</button>
+                                <button type="button" onclick="quickSelectHotelLoc('Singapore')" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">Singapore 🇸🇬</button>
+                                <button type="button" onclick="quickSelectHotelLoc('London, UK')" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">London 🇬🇧</button>
                             </div>
                         </div>
 
@@ -450,16 +500,17 @@
             <div class="space-y-4">
                 <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center justify-between">
                     <span>Top Rated Accommodations</span>
-                    <span id="hotelResultsCount" class="text-xs text-slate-500">3 properties found</span>
+                    <span id="hotelResultsCount" class="text-xs text-slate-500">6 properties found</span>
                 </h3>
 
-                <div id="hotelResultsList" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div id="hotelResultsList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Hotel Cards inserted via JS -->
                 </div>
             </div>
         </div>
 
         <!-- PAGE 4: LANGUAGE GUIDE TRANSLATE BAR -->
+        <!-- STREAMING_CHUNK:Rendering translation tool section... -->
         <div id="page-translations" class="hidden space-y-6">
             <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-lg">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
@@ -467,15 +518,13 @@
                         <h2 class="text-xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
                             <i class="fa-solid fa-language text-amber-500"></i> Smart Language Guide & Audio Assistant
                         </h2>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Translate phrases, get Japanese pronunciation guides, and listen to speech output.</p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Translate phrases, get Japanese Romaji pronunciation guides, and listen to speech output.</p>
                     </div>
 
                     <div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-2xl border border-slate-200 dark:border-slate-700">
                         <button onclick="setInputMode('text')" id="modeBtn-text" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-700 text-slate-800 dark:text-white shadow-sm">
                             <i class="fa-solid fa-keyboard mr-1"></i> Text
-                        </button>
-                        <button onclick="setInputMode('voice')" id="modeBtn-voice" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-400 hover:bg-white/50">
-                            <i class="fa-solid fa-microphone mr-1"></i> Voice
+            
                         </button>
                         <button onclick="setInputMode('camera')" id="modeBtn-camera" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-400 hover:bg-white/50">
                             <i class="fa-solid fa-camera mr-1"></i> Camera/Image
@@ -483,7 +532,6 @@
                     </div>
                 </div>
 
-                <!-- Language Selection Bar -->
                 <div class="flex items-center gap-3 mb-6 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
                     <div class="flex-1">
                         <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">Translate From</label>
@@ -507,13 +555,10 @@
                             <option value="ms">Bahasa Melayu</option>
                             <option value="id">Bahasa Indonesia</option>
                             <option value="en">English</option>
-                            <option value="fr">French (Français)</option>
-                            <option value="es">Spanish (Español)</option>
                         </select>
                     </div>
                 </div>
 
-                <!-- Input Box Container -->
                 <div class="space-y-4">
                     <div id="inputBoxContainer" class="relative">
                         <textarea id="transInputText" rows="3" placeholder="Type a sentence (e.g., 'Thank you very much', 'Where is the beach?', 'How much does this cost?')..." class="w-full p-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl text-sm font-medium focus:ring-2 focus:ring-amber-500 outline-none resize-none"></textarea>
@@ -540,7 +585,6 @@
                     </button>
                 </div>
 
-                <!-- OUTPUT & AUDIO PRONUNCIATION CARD -->
                 <div id="translationOutputCard" class="mt-6 p-6 bg-amber-500/10 border border-amber-500/20 rounded-2xl space-y-4">
                     <div class="flex items-start justify-between">
                         <div>
@@ -560,15 +604,14 @@
                     </div>
 
                     <div class="pt-3 border-t border-amber-500/20">
-                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">Pronunciation & Audio Assistance</span>
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">Pronunciation & Romaji Reading</span>
                         <p id="phoneticGuideText" class="text-xs font-mono text-amber-700 dark:text-amber-300 font-semibold mt-0.5">
-                            [Phonetic guide will render here]
+                            [Phonetic guide & Romaji reading will render here]
                         </p>
                     </div>
                 </div>
             </div>
 
-            <!-- SAVED TRANSLATIONS / PHRASEBOOK -->
             <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
                 <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center justify-between mb-4">
                     <span class="flex items-center gap-2"><i class="fa-solid fa-bookmark text-amber-500"></i> Saved Phrasebook</span>
@@ -582,6 +625,7 @@
         </div>
 
         <!-- PAGE 5: PAYMENTS & BOOKING HISTORY -->
+        <!-- STREAMING_CHUNK:Rendering payment checkout page... -->
         <div id="page-payments" class="hidden space-y-6">
             <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-lg">
                 <h2 class="text-xl font-extrabold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
@@ -590,7 +634,6 @@
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     <div class="lg:col-span-2 space-y-6">
-                        <!-- Voucher Code Box -->
                         <div class="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl flex items-center gap-3">
                             <i class="fa-solid fa-ticket text-emerald-600 text-xl"></i>
                             <div class="flex-1">
@@ -602,7 +645,6 @@
                             </button>
                         </div>
 
-                        <!-- Select Payment Method -->
                         <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Select Payment Method</label>
                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -621,24 +663,23 @@
                             </div>
                         </div>
 
-                        <!-- Card Information Inputs -->
                         <div id="cardFields" class="space-y-4">
                             <div>
                                 <label class="block text-[11px] font-bold text-slate-400 uppercase mb-1">Confirmation Email Address</label>
-                                <input type="email" id="payEmailInput" value="alif.traveler@example.com" class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-semibold outline-none focus:ring-2 focus:ring-emerald-500">
+                                <input type="email" id="payEmailInput" placeholder="name@example.com" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-semibold outline-none focus:ring-2 focus:ring-emerald-500">
                             </div>
                             <div>
                                 <label class="block text-[11px] font-bold text-slate-400 uppercase mb-1">Cardholder Name</label>
-                                <input type="text" id="payCardName" value="Alif Traveler" class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-semibold outline-none focus:ring-2 focus:ring-emerald-500">
+                                <input type="text" id="payCardName" placeholder="Cardholder Name" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-semibold outline-none focus:ring-2 focus:ring-emerald-500">
                             </div>
                             <div class="grid grid-cols-3 gap-3">
                                 <div class="col-span-2">
                                     <label class="block text-[11px] font-bold text-slate-400 uppercase mb-1">Card Number</label>
-                                    <input type="text" id="payCardNum" value="4532 •••• •••• 8892" class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-semibold outline-none focus:ring-2 focus:ring-emerald-500">
+                                    <input type="text" id="payCardNum" placeholder="4532 •••• •••• 8892" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-semibold outline-none focus:ring-2 focus:ring-emerald-500">
                                 </div>
                                 <div>
                                     <label class="block text-[11px] font-bold text-slate-400 uppercase mb-1">CVC</label>
-                                    <input type="password" maxlength="3" value="888" class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-semibold outline-none focus:ring-2 focus:ring-emerald-500">
+                                    <input type="password" maxlength="3" placeholder="123" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-semibold outline-none focus:ring-2 focus:ring-emerald-500">
                                 </div>
                             </div>
                         </div>
@@ -648,7 +689,6 @@
                         </button>
                     </div>
 
-                    <!-- Payment Summary Box -->
                     <div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-3xl border border-slate-200 dark:border-slate-700 h-fit space-y-4">
                         <h3 class="font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider pb-3 border-b border-slate-200 dark:border-slate-700">
                             Order Summary
@@ -685,7 +725,6 @@
                 </div>
             </div>
 
-            <!-- PAYMENT HISTORY & MANAGE BOOKINGS TABLE -->
             <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
                 <h3 class="font-bold text-base text-slate-900 dark:text-white mb-4 flex items-center justify-between">
                     <span class="flex items-center gap-2"><i class="fa-solid fa-receipt text-sky-500"></i> Payment History & Manage Bookings</span>
@@ -713,6 +752,7 @@
         </div>
 
         <!-- PAGE 6: ACCOUNT SETTINGS -->
+        <!-- STREAMING_CHUNK:Rendering user settings panel... -->
         <div id="page-settings" class="hidden space-y-6">
             <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-lg max-w-3xl mx-auto">
                 <h2 class="text-xl font-extrabold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
@@ -789,7 +829,8 @@
         </div>
     </main>
 
-    <!-- FOOTER WITH OFFICIAL LINK -->
+    <!-- FOOTER -->
+    <!-- STREAMING_CHUNK:Rendering page footer... -->
     <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-6">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
             <div class="flex items-center gap-2">
@@ -806,13 +847,13 @@
     </footer>
 
     <!-- MODAL 1: AUTHENTICATION MODAL -->
+    <!-- STREAMING_CHUNK:Rendering auth modal overlay... -->
     <div id="authModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-md w-full p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-2xl relative">
             <button onclick="closeAuthModal()" class="absolute right-4 top-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
 
-            <!-- Auth Mode Tabs -->
             <div id="authTabsContainer" class="flex border-b border-slate-200 dark:border-slate-800 mb-6">
                 <button id="authTabBtn-login" onclick="setAuthTab('login')" class="flex-1 py-2.5 text-xs font-bold border-b-2 border-sky-600 text-sky-600 dark:text-sky-400">
                     Log In
@@ -822,17 +863,15 @@
                 </button>
             </div>
 
-            <!-- Error Notification Banner inside Modal -->
             <div id="authErrorMessage" class="hidden mb-4 p-3 bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 rounded-xl text-xs font-semibold"></div>
 
-            <!-- Profile Overview (If already logged in) -->
             <div id="loggedInView" class="hidden space-y-4 text-center">
                 <div class="w-16 h-16 rounded-full bg-sky-500/20 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl font-black mx-auto">
-                    <span id="profileAvatarText">A</span>
+                    <span id="profileAvatarText">T</span>
                 </div>
                 <div>
-                    <h3 id="profileDisplayName" class="font-bold text-base text-slate-900 dark:text-white">Alif Traveler</h3>
-                    <p id="profileEmail" class="text-xs text-slate-400">aqil@gmail.com</p>
+                    <h3 id="profileDisplayName" class="font-bold text-base text-slate-900 dark:text-white">Traveler</h3>
+                    <p id="profileEmail" class="text-xs text-slate-400">guest@travora.com</p>
                     <span class="inline-block mt-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 text-[10px] font-bold rounded-full">
                         Verified Travora Account
                     </span>
@@ -842,11 +881,10 @@
                 </button>
             </div>
 
-            <!-- Form: Log In / Register -->
             <form id="authForm" onsubmit="submitAuthForm(event)" class="space-y-4">
                 <div id="authNameField" class="hidden">
                     <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Full Name</label>
-                    <input type="text" id="authNameInput" placeholder="e.g. Aqil Amsyar" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-semibold outline-none focus:ring-2 focus:ring-sky-500">
+                    <input type="text" id="authNameInput" placeholder="e.g. Sarah Jenkins" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-semibold outline-none focus:ring-2 focus:ring-sky-500">
                 </div>
 
                 <div>
@@ -863,10 +901,6 @@
                     <button type="submit" id="authSubmitBtn" class="w-full py-3 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-2xl text-xs uppercase tracking-wider shadow-lg hover:shadow-sky-500/25 transition">
                         Log In Now
                     </button>
-                </div>
-
-                <div class="text-center pt-2">
-                    <span class="text-[11px] text-slate-400">Demo Account: aqil@gmail.com | Password: password123</span>
                 </div>
             </form>
         </div>
@@ -894,10 +928,978 @@
         </div>
     </div>
 
-    <!-- TOAST NOTIFICATION CONTAINER -->
+    <!-- TOAST CONTAINER -->
     <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
-    <!-- External Custom JavaScript -->
-    <script src="script.js"></script>
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        /* STREAMING_CHUNK:Initializing state logic and function handlers... */
+        let activeTab = 'dashboard';
+        let currentCurrency = 'MYR';
+        let currencySymbol = 'RM';
+        let currencyRate = 1.0;
+        let hasActiveTrip = false;
+        let selectedPaymentMethod = 'card';
+        let activeAuthTab = 'login';
+
+        window.userAccounts = {};
+        window.activeSimulatedUser = null;
+        window.bookingHistory = [];
+        window.savedTranslations = [];
+
+        window.onload = function() {
+            initCountdown();
+            renderDashboardBookings();
+            renderFlights();
+            renderHotels();
+            renderPaymentHistory();
+            renderSavedTranslations();
+            updateUserSessionState(null);
+            updateTripBannerUI();
+        };
+
+        function switchTab(tabId) {
+            activeTab = tabId;
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-sky-50', 'dark:bg-sky-950/50', 'text-sky-600', 'dark:text-sky-400', 'border', 'border-sky-200', 'dark:border-sky-800');
+                btn.classList.add('text-slate-600', 'dark:text-slate-400');
+            });
+            const activeBtn = document.getElementById(`tabBtn-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.add('active', 'bg-sky-50', 'dark:bg-sky-950/50', 'text-sky-600', 'dark:text-sky-400', 'border', 'border-sky-200', 'dark:border-sky-800');
+            }
+
+            ['dashboard', 'flights', 'hotels', 'translations', 'payments', 'settings'].forEach(page => {
+                const el = document.getElementById(`page-${page}`);
+                if (el) el.classList.add('hidden');
+            });
+            const targetPage = document.getElementById(`page-${tabId}`);
+            if (targetPage) targetPage.classList.remove('hidden');
+        }
+
+        /* STREAMING_CHUNK:Executing countdown timer logic... */
+        let countdownTimerInterval = null;
+        function initCountdown() {
+            if (countdownTimerInterval) clearInterval(countdownTimerInterval);
+            updateCountdownDisplay();
+            countdownTimerInterval = setInterval(updateCountdownDisplay, 1000);
+        }
+
+        function updateCountdownDisplay() {
+            const daysEl = document.getElementById('timerDays');
+            if (!daysEl) return;
+            if (!hasActiveTrip) return;
+
+            const targetDate = new Date('2026-09-01T08:00:00');
+            const now = new Date();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                daysEl.innerText = '00';
+                document.getElementById('timerHours').innerText = '00';
+                document.getElementById('timerMins').innerText = '00';
+                document.getElementById('timerSecs').innerText = '00';
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+            daysEl.innerText = String(days).padStart(2, '0');
+            document.getElementById('timerHours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('timerMins').innerText = String(mins).padStart(2, '0');
+            document.getElementById('timerSecs').innerText = String(secs).padStart(2, '0');
+            
+            const daysCountText = document.getElementById('daysCountText');
+            if (daysCountText) daysCountText.innerText = days;
+        }
+
+        function updateTripBannerUI() {
+            const heading = document.getElementById('welcomeHeading');
+            const subtext = document.getElementById('welcomeSubtext');
+            const countdownBox = document.getElementById('countdownBox');
+            const userName = window.activeSimulatedUser ? (window.activeSimulatedUser.displayName || 'Traveler') : 'Traveler';
+
+            if (hasActiveTrip) {
+                heading.innerHTML = `Welcome Back, <span class="text-sky-300">${userName}</span>. Your trip to <span class="text-amber-300">Bali</span> is in <span id="daysCountText" class="text-emerald-300">14</span> days!`;
+                subtext.innerText = "Pack your bags! Everything is synced for your upcoming trip to Ngurah Rai Airport (DPS).";
+                if (countdownBox) countdownBox.classList.remove('hidden');
+            } else {
+                heading.innerHTML = `Welcome to Travora, <span class="text-sky-300">${userName}</span>. No trips planned yet—let’s find your next great getaway!`;
+                subtext.innerText = "Explore hundreds of flights and luxury stays for your next vacation.";
+                if (countdownBox) countdownBox.classList.add('hidden');
+            }
+        }
+
+        function toggleTripState() {
+            hasActiveTrip = !hasActiveTrip;
+            updateTripBannerUI();
+            if (hasActiveTrip) {
+                showToast("Switched to Active Trip View", "info");
+            } else {
+                showToast("Switched to First-Time User View", "info");
+            }
+        }
+
+        function changeCurrency(val) {
+            currentCurrency = val;
+            const rates = { MYR: 1.0, USD: 0.22, EUR: 0.20, IDR: 3500, JPY: 33.5 };
+            const symbols = { MYR: 'RM', USD: '$', EUR: '€', IDR: 'Rp', JPY: '¥' };
+            currencyRate = rates[val] || 1.0;
+            currencySymbol = symbols[val] || 'RM';
+            
+            renderFlights();
+            renderHotels();
+            renderPaymentHistory();
+            renderDashboardBookings();
+            showToast(`Currency changed to ${val}`, "success");
+        }
+
+        function formatMoney(amountMYR) {
+            const converted = amountMYR * currencyRate;
+            return `${currencySymbol} ${converted.toLocaleString(undefined, { minimumFractionDigits: currentCurrency === 'IDR' ? 0 : 2, maximumFractionDigits: currentCurrency === 'IDR' ? 0 : 2 })}`;
+        }
+
+        /* STREAMING_CHUNK:Managing flight booking engine logic... */
+        let currentFlightResults = [
+            { id: 1, airline: 'Malaysia Airlines', code: 'MH-715', dept: '09:30 AM', arr: '12:35 PM', duration: '3h 05m', price: 640, class: 'Economy', fromCode: 'KUL', toCode: 'DPS' },
+            { id: 2, airline: 'AirAsia', code: 'AK-380', dept: '01:15 PM', arr: '04:20 PM', duration: '3h 05m', price: 420, class: 'Economy', fromCode: 'KUL', toCode: 'DPS' },
+            { id: 3, airline: 'Singapore Airlines', code: 'SQ-942', dept: '06:00 AM', arr: '11:10 AM', duration: '5h 10m', price: 980, class: 'Business', fromCode: 'KUL', toCode: 'DPS' }
+        ];
+
+        function renderFlights() {
+            const container = document.getElementById('flightResultsList');
+            if (!container) return;
+
+            if (currentFlightResults.length === 0) {
+                container.innerHTML = `<div class="p-8 text-center text-slate-400 bg-white dark:bg-slate-900 rounded-2xl border border-dashed border-slate-200 dark:border-slate-800">No matching flights found for this route.</div>`;
+                return;
+            }
+
+            container.innerHTML = currentFlightResults.map(f => `
+                <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-600 dark:text-sky-400 flex items-center justify-center font-black text-lg">
+                            <i class="fa-solid fa-plane"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">${f.airline}</span>
+                            <h4 class="font-bold text-sm text-slate-900 dark:text-white">${f.fromCode || 'KUL'} (${f.dept}) ➔ ${f.toCode || 'DPS'} (${f.arr})</h4>
+                            <p class="text-[11px] text-slate-400">Flight ${f.code} • Direct (${f.duration}) • ${f.class}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between md:justify-end gap-6 border-t md:border-t-0 pt-3 md:pt-0">
+                        <div class="text-right">
+                            <span class="text-[10px] text-slate-400 block uppercase font-bold">Price per person</span>
+                            <span class="text-lg font-black text-slate-900 dark:text-white">${formatMoney(f.price)}</span>
+                        </div>
+                        <button onclick="bookFlightItem('${f.airline} (${f.fromCode} - ${f.toCode})', ${f.price})" class="px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-xl text-xs transition">
+                            Book Flight
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function handleFlightSearch(e) {
+            if (e) e.preventDefault();
+            const from = document.getElementById('flightFrom').value.trim();
+            const to = document.getElementById('flightTo').value.trim();
+            const selectedAirline = document.getElementById('flightAirline').value;
+            const cabin = document.getElementById('flightCabinClass').value;
+            const adults = parseInt(document.getElementById('flightAdults').value) || 1;
+
+            const extractCode = (str, defaultCode) => {
+                const match = str.match(/\(([^)]+)\)/);
+                if (match) return match[1];
+                return str.substring(0, 3).toUpperCase() || defaultCode;
+            };
+
+            const fromCode = extractCode(from, 'KUL');
+            const toCode = extractCode(to, 'DPS');
+
+            let basePrice = 450;
+            if (to.toLowerCase().includes('japan') || to.toLowerCase().includes('tokyo') || toCode === 'HND' || toCode === 'NRT') basePrice = 1450;
+            else if (to.toLowerCase().includes('london') || to.toLowerCase().includes('paris') || toCode === 'LHR') basePrice = 2800;
+            else if (to.toLowerCase().includes('singapore') || toCode === 'SIN') basePrice = 320;
+            else if (to.toLowerCase().includes('bali') || toCode === 'DPS') basePrice = 550;
+            else if (to.toLowerCase().includes('bangkok') || toCode === 'BKK') basePrice = 480;
+            else basePrice = 600 + (to.length * 25);
+
+            const cabinMultiplier = cabin === 'business' ? 2.5 : (cabin === 'premium' ? 1.6 : (cabin === 'first' ? 4.0 : 1.0));
+            const finalPrice = Math.round(basePrice * cabinMultiplier * adults);
+
+            const airlines = selectedAirline === 'all' 
+                ? ['Malaysia Airlines', 'AirAsia', 'ANA Japan', 'Singapore Airlines'] 
+                : [selectedAirline, 'AirAsia', 'Emirates'];
+
+            currentFlightResults = [
+                { id: 101, airline: airlines[0] || 'Malaysia Airlines', code: `${fromCode.substring(0,2)}-${Math.floor(100+Math.random()*899)}`, dept: '08:15 AM', arr: '11:45 AM', duration: '3h 30m', price: finalPrice, class: cabin.toUpperCase(), fromCode, toCode },
+                { id: 102, airline: airlines[1] || 'AirAsia', code: `AK-${Math.floor(100+Math.random()*899)}`, dept: '01:30 PM', arr: '05:00 PM', duration: '3h 30m', price: Math.round(finalPrice * 0.75), class: 'ECONOMY', fromCode, toCode },
+                { id: 103, airline: airlines[2] || 'Singapore Airlines', code: `SQ-${Math.floor(100+Math.random()*899)}`, dept: '06:45 PM', arr: '10:15 PM', duration: '3h 30m', price: Math.round(finalPrice * 1.35), class: cabin.toUpperCase(), fromCode, toCode }
+            ];
+
+            const titleEl = document.getElementById('flightSearchTitle');
+            if (titleEl) titleEl.innerText = `Available Flights (${fromCode} ➔ ${toCode})`;
+
+            const countEl = document.getElementById('flightResultsCount');
+            if (countEl) countEl.innerText = `Showing ${currentFlightResults.length} options for ${from} to ${to}`;
+
+            renderFlights();
+            showToast(`Updated flight options: ${fromCode} to ${toCode}`, "success");
+        }
+
+        function bookFlightItem(title, amount) {
+            document.getElementById('summaryTitle').innerText = title;
+            document.getElementById('summaryBasePrice').innerText = formatMoney(amount);
+            document.getElementById('summaryTotalPrice').innerText = formatMoney(amount);
+            switchTab('payments');
+            showToast(`Selected ${title} for checkout`, "info");
+        }
+
+        /* STREAMING_CHUNK:Configuring hotel search engine and rendering... */
+        function quickSelectHotelLoc(locName) {
+            const locInput = document.getElementById('hotelLocation');
+            if (locInput) {
+                locInput.value = locName;
+                handleHotelSearch();
+            }
+        }
+
+        let currentHotelResults = [
+            { id: 101, name: 'Seminyak Beach Luxury Resort', location: 'Bali, Indonesia', rating: 4.9, reviews: 312, price: 350, tag: 'Beachfront', img: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80' },
+            { id: 102, name: 'Ubud Jungle Sanctuary Villa', location: 'Bali, Indonesia', rating: 4.8, reviews: 245, price: 280, tag: 'Private Pool', img: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=400&q=80' },
+            { id: 103, name: 'Canggu Ocean View Suites', location: 'Bali, Indonesia', rating: 4.6, reviews: 180, price: 190, tag: 'Ocean View', img: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=400&q=80' },
+            { id: 104, name: 'Nusa Dua Horizon Palace', location: 'Bali, Indonesia', rating: 4.7, reviews: 156, price: 420, tag: '5-Star Luxury', img: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=400&q=80' },
+            { id: 105, name: 'Kuta Heritage Boutique Hotel', location: 'Bali, Indonesia', rating: 4.4, reviews: 210, price: 140, tag: 'City Center', img: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=400&q=80' },
+            { id: 106, name: 'Uluwatu Cliffside Retreat', location: 'Bali, Indonesia', rating: 4.9, reviews: 98, price: 510, tag: 'Infinity Pool', img: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=400&q=80' }
+        ];
+
+        function renderHotels() {
+            const container = document.getElementById('hotelResultsList');
+            if (!container) return;
+
+            if (currentHotelResults.length === 0) {
+                container.innerHTML = `<div class="col-span-3 p-8 text-center text-slate-400 bg-white dark:bg-slate-900 rounded-2xl border border-dashed border-slate-200 dark:border-slate-800">No hotel stays found for this location.</div>`;
+                return;
+            }
+
+            container.innerHTML = currentHotelResults.map(h => `
+                <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden flex flex-col hover:shadow-md transition group">
+                    <div class="h-48 bg-slate-200 dark:bg-slate-800 relative overflow-hidden">
+                        <img src="${h.img}" alt="${h.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/400x250/0f172a/ffffff?text=${encodeURIComponent(h.name)}'">
+                        <span class="absolute top-3 right-3 px-2.5 py-1 bg-slate-900/80 backdrop-blur-md text-amber-400 rounded-full text-[11px] font-bold shadow">
+                            <i class="fa-solid fa-star mr-1"></i> ${h.rating} (${h.reviews})
+                        </span>
+                        <span class="absolute top-3 left-3 px-2.5 py-1 bg-sky-600/90 backdrop-blur-md text-white rounded-full text-[10px] font-extrabold tracking-wider uppercase shadow">
+                            ${h.tag || 'Popular'}
+                        </span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider block mb-0.5"><i class="fa-solid fa-location-dot mr-1"></i>${h.location || 'Location'}</span>
+                            <h4 class="font-bold text-sm text-slate-900 dark:text-white mb-1.5 line-clamp-1">${h.name}</h4>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400"><i class="fa-solid fa-wifi text-emerald-500 mr-1"></i> Free High-Speed WiFi • Breakfast Included</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] text-slate-400 block font-bold uppercase">Per Night</span>
+                                <span class="text-base font-black text-slate-900 dark:text-white">${formatMoney(h.price)}</span>
+                            </div>
+                            <button onclick="bookHotelItem('${h.name} (${h.location})', ${h.price})" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs transition shadow-sm hover:shadow-indigo-500/20">
+                                Reserve Room
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function handleHotelSearch(e) {
+            if (e) e.preventDefault();
+            const locationInput = document.getElementById('hotelLocation').value.trim();
+            const rooms = parseInt(document.getElementById('hotelRooms').value) || 1;
+
+            const locLower = locationInput.toLowerCase();
+            let basePrice = 280;
+
+            if (locLower.includes('tokyo') || locLower.includes('japan')) basePrice = 580;
+            else if (locLower.includes('paris') || locLower.includes('london')) basePrice = 750;
+            else if (locLower.includes('singapore')) basePrice = 490;
+            else if (locLower.includes('kuala lumpur') || locLower.includes('malaysia')) basePrice = 220;
+            else if (locLower.includes('penang')) basePrice = 190;
+            else if (locLower.includes('bangkok') || locLower.includes('thailand')) basePrice = 240;
+            else basePrice = 290 + (locationInput.length * 10);
+
+            const roomMultiplier = rooms * 0.95;
+            const calcPrice = (mult) => Math.round(basePrice * mult * roomMultiplier);
+
+            const hotelImages = [
+                'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80',
+                'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=400&q=80',
+                'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=400&q=80',
+                'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=400&q=80',
+                'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=400&q=80',
+                'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=400&q=80'
+            ];
+
+            currentHotelResults = [
+                { id: 201, name: `${locationInput} Grand Luxury Resort & Spa`, location: locationInput, rating: 4.9, reviews: Math.floor(250 + Math.random() * 300), price: calcPrice(1.4), tag: '5-Star Luxury', img: hotelImages[0] },
+                { id: 202, name: `${locationInput} City Central Boutique Hotel`, location: locationInput, rating: 4.7, reviews: Math.floor(180 + Math.random() * 200), price: calcPrice(1.0), tag: 'City Center', img: hotelImages[1] },
+                { id: 203, name: `${locationInput} Ocean View Suites & Villas`, location: locationInput, rating: 4.6, reviews: Math.floor(120 + Math.random() * 150), price: calcPrice(0.85), tag: 'Scenic View', img: hotelImages[2] },
+                { id: 204, name: `${locationInput} Heritage Palace & Spa`, location: locationInput, rating: 4.8, reviews: Math.floor(190 + Math.random() * 220), price: calcPrice(1.25), tag: 'Spa & Wellness', img: hotelImages[3] },
+                { id: 205, name: `${locationInput} Skyline Tower Hotel`, location: locationInput, rating: 4.5, reviews: Math.floor(140 + Math.random() * 180), price: calcPrice(0.75), tag: 'Best Value', img: hotelImages[4] },
+                { id: 206, name: `${locationInput} Royal Garden Residence`, location: locationInput, rating: 4.9, reviews: Math.floor(90 + Math.random() * 110), price: calcPrice(1.6), tag: 'Executive Suite', img: hotelImages[5] }
+            ];
+
+            const countEl = document.getElementById('hotelResultsCount');
+            if (countEl) countEl.innerText = `Showing ${currentHotelResults.length} accommodations in ${locationInput}`;
+
+            renderHotels();
+            showToast(`Found ${currentHotelResults.length} properties in ${locationInput}`, "success");
+        }
+
+        function sortHotels(criteria) {
+            if (criteria === 'price-asc') currentHotelResults.sort((a,b) => a.price - b.price);
+            if (criteria === 'price-desc') currentHotelResults.sort((a,b) => b.price - a.price);
+            if (criteria === 'rating-desc') currentHotelResults.sort((a,b) => b.rating - a.rating);
+            if (criteria === 'rating-asc') currentHotelResults.sort((a,b) => a.rating - b.rating);
+            renderHotels();
+        }
+
+        function bookHotelItem(title, amount) {
+            document.getElementById('summaryTitle').innerText = title;
+            document.getElementById('summaryBasePrice').innerText = formatMoney(amount);
+            document.getElementById('summaryTotalPrice').innerText = formatMoney(amount);
+            switchTab('payments');
+            showToast(`Selected ${title} for booking`, "info");
+        }
+
+        /* STREAMING_CHUNK:Configuring translator and speech synthesizer... */
+        const travelDictionary = {
+            "thank you": { ja: "ありがとう", romaji: "Arigatou", ms: "Terima kasih", id: "Terima kasih" },
+            "thank you very much": { ja: "ありがとうございます", romaji: "Arigatou gozaimasu", ms: "Terima kasih banyak", id: "Terima kasih banyak" },
+            "good morning": { ja: "おはようございます", romaji: "Ohayou gozaimasu", ms: "Selamat pagi", id: "Selamat pagi" },
+            "hello": { ja: "こんにちは", romaji: "Konnichiwa", ms: "Helo / Selamat sebahagia", id: "Halo" },
+            "where is the beach?": { ja: "ビーチはどこですか？", romaji: "Biichi wa doko desu ka?", ms: "Di manakah pantai?", id: "Di mana pantainya?" },
+            "how much is this?": { ja: "内容はいくらですか？", romaji: "Kore wa ikura desu ka?", ms: "Berapakah harga ini?", id: "Berapa harganya ini?" },
+            "where is the toilet?": { ja: "お手洗いはどこですか？", romaji: "Otearai wa doko desu ka?", ms: "Tandas di mana?", id: "Di mana toiletnya?" },
+            "delicious": { ja: "美味しい", romaji: "Oishii", ms: "Sedap", id: "Enak" },
+            "help me": { ja: "助けてください", romaji: "Tasukete kudasai", ms: "Tolong saya", id: "Tolong saya" }
+        };
+
+        function convertToRomajiReading(text, targetLang) {
+            if (targetLang !== 'ja') return '';
+            const lower = text.toLowerCase().trim();
+            for (let key in travelDictionary) {
+                if (travelDictionary[key].ja === text || key === lower) {
+                    return `Romaji (Reading): ${travelDictionary[key].romaji}`;
+                }
+            }
+            const romajiMatch = text.match(/\(([^)]+)\)/);
+            if (romajiMatch) {
+                return `Romaji (Reading): ${romajiMatch[1]}`;
+            }
+            return `Romaji (Reading Guide): ${text}`;
+        }
+
+        async function performTranslation() {
+            const input = document.getElementById('transInputText').value.trim();
+            const targetLang = document.getElementById('targetLangSelect').value;
+            const outputText = document.getElementById('translationOutputText');
+            const phoneticGuide = document.getElementById('phoneticGuideText');
+
+            if (!input) {
+                showToast("Please enter a sentence to translate first!", "warning");
+                return;
+            }
+
+            outputText.innerText = "Translating sentence...";
+            phoneticGuide.innerText = "Generating pronunciation guide & Romaji reading...";
+
+            const lower = input.toLowerCase();
+
+            if (travelDictionary[lower]) {
+                const match = travelDictionary[lower];
+                if (targetLang === 'ja') {
+                    outputText.innerHTML = `${match.ja} <span class="block text-sm text-amber-600 dark:text-amber-400 font-normal mt-1">(${match.romaji})</span>`;
+                    phoneticGuide.innerText = `Romaji Reading: "${match.romaji}" • Pronunciation: [${match.romaji.replace(/([aeiou])/g, '$1-')}]`;
+                } else {
+                    outputText.innerText = match[targetLang] || input;
+                    phoneticGuide.innerText = `Phonetic: [${(match[targetLang] || input)}]`;
+                }
+                showToast("Translation completed", "success");
+                return;
+            }
+
+            try {
+                const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(input)}&langpair=autodetect|${targetLang}`);
+                const data = await res.json();
+                if (data && data.responseData && data.responseData.translatedText) {
+                    let transText = data.responseData.translatedText;
+                    if (targetLang === 'ja') {
+                        const romajiText = convertToRomajiReading(transText, 'ja');
+                        outputText.innerHTML = `${transText} <span class="block text-sm text-amber-600 dark:text-amber-400 font-normal mt-1">(${romajiText.replace('Romaji (Reading): ', '')})</span>`;
+                        phoneticGuide.innerText = `${romajiText} • Japanese Audio Available`;
+                    } else {
+                        outputText.innerText = transText;
+                        phoneticGuide.innerText = `Phonetic Guide: [${transText}]`;
+                    }
+                    showToast("Translation completed", "success");
+                } else {
+                    outputText.innerText = `${input} (${targetLang.toUpperCase()})`;
+                    phoneticGuide.innerText = `[Phonetic: ${input}]`;
+                }
+            } catch (err) {
+                outputText.innerText = `${input} [${targetLang.toUpperCase()}]`;
+                phoneticGuide.innerText = `[Phonetic Guide: ${input}]`;
+            }
+        }
+
+        function triggerVoiceDictation() {
+            if ('webkitSpeechRecognition' in window) {
+                const recognition = new webkitSpeechRecognition();
+                recognition.onstart = () => showToast("Listening... Speak into microphone", "info");
+                recognition.onresult = (e) => {
+                    const text = e.results[0][0].transcript;
+                    document.getElementById('transInputText').value = text;
+                    performTranslation();
+                };
+                recognition.start();
+            } else {
+                document.getElementById('transInputText').value = "Where is the nearest beach?";
+                performTranslation();
+                showToast("Voice input simulated", "info");
+            }
+        }
+
+        function handleCameraUpload(e) {
+            const file = e.target.files[0];
+            if (file) {
+                document.getElementById('transInputText').value = "Thank you very much";
+                performTranslation();
+                showToast(`Scanned image: ${file.name}`, "success");
+            }
+        }
+
+        function setInputMode(mode) {
+            ['text', 'voice', 'camera'].forEach(m => {
+                const btn = document.getElementById(`modeBtn-${m}`);
+                if (btn) btn.className = 'px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-400 hover:bg-white/50';
+            });
+            document.getElementById(`modeBtn-${mode}`).className = 'px-3 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-700 text-slate-800 dark:text-white shadow-sm';
+
+            if (mode === 'camera') {
+                document.getElementById('inputBoxContainer').classList.add('hidden');
+                document.getElementById('cameraUploadContainer').classList.remove('hidden');
+            } else {
+                document.getElementById('inputBoxContainer').classList.remove('hidden');
+                document.getElementById('cameraUploadContainer').classList.add('hidden');
+            }
+        }
+
+        function swapTranslationLangs() {
+            const source = document.getElementById('sourceLangSelect');
+            const target = document.getElementById('targetLangSelect');
+            const temp = source.value === 'auto' ? 'en' : source.value;
+            source.value = target.value;
+            target.value = temp;
+            showToast("Translation languages swapped", "info");
+        }
+
+        /* STREAMING_CHUNK:Configuring speech synthesis audio engine... */
+        let availableVoices = [];
+        if ('speechSynthesis' in window) {
+            const loadVoices = () => { availableVoices = window.speechSynthesis.getVoices(); };
+            loadVoices();
+            if (window.speechSynthesis.onvoiceschanged !== undefined) {
+                window.speechSynthesis.onvoiceschanged = loadVoices;
+            }
+        }
+
+        function getBestVoiceForLang(langCode) {
+            if (!('speechSynthesis' in window)) return null;
+            const voices = availableVoices.length > 0 ? availableVoices : window.speechSynthesis.getVoices();
+            if (!voices || voices.length === 0) return null;
+            
+            const code = (langCode || 'ja').toLowerCase().split('-')[0];
+            let match = voices.find(v => v.lang.toLowerCase().replace('_', '-').startsWith(code));
+            if (match) return match;
+
+            const keywordsMap = {
+                'ja': ['japan', 'japanese', '日本語', 'kyoko', 'otoya', 'haruka', 'sakura', 'sho', 'hattori', 'google 日本語'],
+                'ms': ['malay', 'malaysia', 'melayu'],
+                'id': ['indonesia', 'indonesian'],
+                'en': ['english', 'us', 'uk'],
+                'fr': ['french', 'france'],
+                'es': ['spanish', 'spain']
+            };
+            const keywords = keywordsMap[code] || ['japan', 'japanese', '日本語'];
+            return voices.find(v => keywords.some(kw => v.name.toLowerCase().includes(kw))) || null;
+        }
+
+        function playAudioFallback(text, langCode) {
+            return new Promise((resolve) => {
+                try {
+                    const cleanCode = (langCode || 'ja').split('-')[0];
+                    const ttsUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${cleanCode}&client=tw-ob`;
+                    const audio = new Audio(ttsUrl);
+                    audio.onended = () => resolve(true);
+                    audio.onerror = () => resolve(false);
+                    const playPromise = audio.play();
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {}).catch(() => resolve(false));
+                    }
+                } catch (e) {
+                    resolve(false);
+                }
+            });
+        }
+
+        window.speakTranslation = async function(textToSpeak, targetLang) {
+            if (!textToSpeak) {
+                const transOutput = document.getElementById('translationOutputText');
+                textToSpeak = transOutput ? transOutput.innerText : '';
+            }
+            if (!targetLang) {
+                const langSelect = document.getElementById('targetLangSelect');
+                targetLang = langSelect ? langSelect.value : 'ja';
+            }
+
+            if (!textToSpeak || textToSpeak.includes('Translation will appear here')) {
+                showToast("No translated text to speak yet! Type a sentence first.", "warning");
+                return;
+            }
+
+            const cleanText = textToSpeak.replace(/\([^)]*\)/g, '').trim() || textToSpeak;
+            const speakBtn = document.getElementById('speakBtn');
+            if (speakBtn) speakBtn.classList.add('animate-pulse', 'text-amber-500');
+
+            const langMeta = {
+                'ja': { code: 'ja-JP', name: 'Japanese' },
+                'ms': { code: 'ms-MY', name: 'Malay' },
+                'id': { code: 'id-ID', name: 'Indonesian' },
+                'en': { code: 'en-US', name: 'English' },
+                'fr': { code: 'fr-FR', name: 'French' },
+                'es': { code: 'es-ES', name: 'Spanish' }
+            };
+
+            const langConfig = langMeta[targetLang] || { code: 'ja-JP', name: 'Japanese' };
+            const removePulse = () => { if (speakBtn) speakBtn.classList.remove('animate-pulse', 'text-amber-500'); };
+
+            let spokenSuccessfully = false;
+
+            if ('speechSynthesis' in window) {
+                try {
+                    window.speechSynthesis.cancel();
+                    const utterance = new SpeechSynthesisUtterance(cleanText);
+                    utterance.lang = langConfig.code;
+                    utterance.rate = 0.88;
+
+                    const matchedVoice = getBestVoiceForLang(targetLang);
+                    if (matchedVoice) utterance.voice = matchedVoice;
+
+                    utterance.onend = removePulse;
+                    utterance.onerror = async () => {
+                        await playAudioFallback(cleanText, targetLang);
+                        removePulse();
+                    };
+
+                    window.speechSynthesis.speak(utterance);
+                    spokenSuccessfully = true;
+                    setTimeout(removePulse, 3500);
+                } catch (e) {}
+            }
+
+            if (!spokenSuccessfully) {
+                await playAudioFallback(cleanText, targetLang);
+                removePulse();
+            }
+        };
+
+        function saveCurrentTranslation() {
+            const source = document.getElementById('transInputText').value;
+            const target = document.getElementById('translationOutputText').innerText;
+            const lang = document.getElementById('targetLangSelect').value;
+
+            if (!source || target.includes('Translation will appear')) {
+                showToast("Please translate a sentence before saving!", "warning");
+                return;
+            }
+
+            window.savedTranslations.push({
+                docId: 'trans_' + Date.now(),
+                source: source,
+                target: target,
+                lang: lang
+            });
+            renderSavedTranslations();
+            showToast("Saved to your personal phrasebook!", "success");
+        }
+
+        function renderSavedTranslations() {
+            const container = document.getElementById('savedTranslationsList');
+            const countEl = document.getElementById('savedCountText');
+            if (!container) return;
+
+            if (countEl) countEl.innerText = `${window.savedTranslations.length} phrases saved`;
+
+            if (window.savedTranslations.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-2 p-8 text-center text-slate-400 border border-dashed border-slate-200 dark:border-slate-800 rounded-2xl">
+                        <i class="fa-solid fa-bookmark text-2xl mb-2"></i>
+                        <p class="text-xs font-semibold">No saved translations yet.</p>
+                        <p class="text-[11px]">Translate phrases above and click the bookmark icon to save them!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = window.savedTranslations.map(item => `
+                <div class="p-4 bg-slate-50 dark:bg-slate-800/60 rounded-2xl border border-slate-200 dark:border-slate-700 flex items-center justify-between gap-3">
+                    <div>
+                        <span class="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase">${item.lang}</span>
+                        <h5 class="font-bold text-xs text-slate-900 dark:text-white">${item.target}</h5>
+                        <p class="text-[11px] text-slate-400 font-medium">"${item.source}"</p>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <button onclick="speakSavedPhrase('${item.target.replace(/'/g, "\\'")}', '${item.lang}')" class="p-2 text-amber-600 hover:bg-amber-500/10 rounded-lg">
+                            <i class="fa-solid fa-volume-high text-xs"></i>
+                        </button>
+                        <button onclick="deleteSavedTranslation('${item.docId}')" class="p-2 text-rose-500 hover:bg-rose-500/10 rounded-lg">
+                            <i class="fa-solid fa-trash text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function speakSavedPhrase(text, lang) {
+            speakTranslation(text, lang);
+        }
+
+        function deleteSavedTranslation(docId) {
+            window.savedTranslations = window.savedTranslations.filter(t => t.docId !== docId);
+            renderSavedTranslations();
+            showToast("Phrase removed from phrasebook", "info");
+        }
+
+        /* STREAMING_CHUNK:Configuring payment gateway options... */
+        function selectPaymentMethod(method) {
+            selectedPaymentMethod = method;
+            ['card', 'fpx', 'ewallet', 'qr'].forEach(m => {
+                const btn = document.getElementById(`payMethod-${m}`);
+                if (btn) {
+                    btn.className = 'p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 text-center font-bold text-xs transition flex flex-col items-center gap-2 text-slate-600 dark:text-slate-300';
+                }
+            });
+            const selectedBtn = document.getElementById(`payMethod-${method}`);
+            if (selectedBtn) {
+                selectedBtn.className = 'p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-center font-bold text-xs transition flex flex-col items-center gap-2 text-emerald-700 dark:text-emerald-300';
+            }
+        }
+
+        function applyVoucher() {
+            const input = document.getElementById('voucherInput').value.trim();
+            if (input === 'TRAVORA10') {
+                document.getElementById('summaryDiscount').innerText = '- RM 128.00';
+                document.getElementById('summaryTotalPrice').innerText = formatMoney(1152);
+                showToast("Voucher TRAVORA10 Applied! 10% Discount received.", "success");
+            } else {
+                showToast("Invalid voucher code. Try TRAVORA10", "warning");
+            }
+        }
+
+        function processPayment() {
+            const newBooking = {
+                id: 'TRV-' + Math.floor(10000 + Math.random() * 90000),
+                title: document.getElementById('summaryTitle').innerText,
+                date: new Date().toISOString().split('T')[0],
+                amount: 1280,
+                status: 'Confirmed',
+                type: 'Booking'
+            };
+
+            window.bookingHistory.unshift(newBooking);
+            renderPaymentHistory();
+            renderDashboardBookings();
+            showToast(`Payment Successful! Booking ID: ${newBooking.id}`, "success");
+            viewBooking(newBooking.id);
+        }
+
+        function renderPaymentHistory() {
+            const tbody = document.getElementById('paymentHistoryTbody');
+            if (!tbody) return;
+
+            if (window.bookingHistory.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="py-8 text-center text-slate-400">No payment history yet.</td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = window.bookingHistory.map(b => `
+                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
+                    <td class="py-3.5 px-4 font-mono font-bold text-sky-600 dark:text-sky-400">${b.id}</td>
+                    <td class="py-3.5 px-4 font-bold text-slate-800 dark:text-slate-200">${b.title}</td>
+                    <td class="py-3.5 px-4 text-slate-400">${b.date}</td>
+                    <td class="py-3.5 px-4 font-mono font-black">${formatMoney(b.amount)}</td>
+                    <td class="py-3.5 px-4">
+                        <span class="px-2.5 py-1 rounded-full text-[10px] font-bold ${b.status === 'Confirmed' ? 'bg-emerald-500/10 text-emerald-600 border border-emerald-500/20' : 'bg-rose-500/10 text-rose-600 border border-rose-500/20'}">
+                            ${b.status}
+                        </span>
+                    </td>
+                    <td class="py-3.5 px-4 text-right space-x-2">
+                        <button onclick="viewBooking('${b.id}')" class="px-3 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 rounded-lg text-[11px] font-bold">Receipt</button>
+                        ${b.status === 'Confirmed' ? `<button onclick="cancelBooking('${b.id}')" class="px-3 py-1 bg-rose-500/10 text-rose-600 hover:bg-rose-500/20 rounded-lg text-[11px] font-bold">Cancel</button>` : ''}
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function renderDashboardBookings() {
+            const container = document.getElementById('dashBookingsPreview');
+            if (!container) return;
+
+            if (window.bookingHistory.length === 0) {
+                container.innerHTML = `<p class="text-xs text-slate-400 py-2">No active bookings available.</p>`;
+                return;
+            }
+
+            container.innerHTML = window.bookingHistory.slice(0, 2).map(b => `
+                <div class="p-4 bg-slate-50 dark:bg-slate-800/60 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-600 dark:text-sky-400 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-ticket"></i>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-xs text-slate-900 dark:text-white">${b.title}</h5>
+                            <span class="text-[10px] text-slate-400 font-mono">${b.id} • ${b.date}</span>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs font-black text-slate-900 dark:text-white block">${formatMoney(b.amount)}</span>
+                        <span class="text-[10px] font-bold text-emerald-500 uppercase">${b.status}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function viewBooking(id) {
+            const b = window.bookingHistory.find(x => x.id === id);
+            if (!b) return;
+
+            const content = document.getElementById('receiptContent');
+            if (content) {
+                content.innerHTML = `
+                    <div class="text-center pb-3 border-b border-slate-200 dark:border-slate-700">
+                        <h4 class="font-black text-base uppercase tracking-wider text-slate-900 dark:text-white">TRAVORA OFFICIAL RECEIPT</h4>
+                        <a href="https://www.travora.com" target="_blank" class="text-[11px] text-sky-600 hover:underline font-semibold block">www.travora.com</a>
+                        <span class="text-slate-400 font-mono text-[11px]">${b.id}</span>
+                    </div>
+                    <div class="space-y-2 pt-2">
+                        <div class="flex justify-between"><span>Service Item:</span><span class="font-bold text-slate-900 dark:text-white">${b.title}</span></div>
+                        <div class="flex justify-between"><span>Booking Date:</span><span class="font-medium">${b.date}</span></div>
+                        <div class="flex justify-between"><span>Payment Status:</span><span class="font-bold text-emerald-500">${b.status}</span></div>
+                        <div class="flex justify-between pt-2 border-t font-black text-sm text-slate-900 dark:text-white"><span>Total Paid:</span><span class="text-sky-600">${formatMoney(b.amount)}</span></div>
+                    </div>
+                `;
+            }
+            document.getElementById('receiptModal').classList.remove('hidden');
+        }
+
+        function cancelBooking(id) {
+            const b = window.bookingHistory.find(x => x.id === id);
+            if (b) {
+                b.status = 'Cancelled';
+                renderPaymentHistory();
+                renderDashboardBookings();
+                showToast(`Booking ${id} has been cancelled.`, "warning");
+            }
+        }
+
+        /* STREAMING_CHUNK:Executing authentication routines... */
+        function openAuthModal() {
+            document.getElementById('authModal').classList.remove('hidden');
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').classList.add('hidden');
+        }
+
+        function setAuthTab(tab) {
+            activeAuthTab = tab;
+            const errBox = document.getElementById('authErrorMessage');
+            if (errBox) errBox.classList.add('hidden');
+
+            const loginBtn = document.getElementById('authTabBtn-login');
+            const regBtn = document.getElementById('authTabBtn-register');
+            const nameField = document.getElementById('authNameField');
+            const submitBtn = document.getElementById('authSubmitBtn');
+
+            if (tab === 'login') {
+                loginBtn.className = 'flex-1 py-2.5 text-xs font-bold border-b-2 border-sky-600 text-sky-600 dark:text-sky-400';
+                regBtn.className = 'flex-1 py-2.5 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-600';
+                nameField.classList.add('hidden');
+                submitBtn.innerText = 'Log In Now';
+            } else {
+                regBtn.className = 'flex-1 py-2.5 text-xs font-bold border-b-2 border-sky-600 text-sky-600 dark:text-sky-400';
+                loginBtn.className = 'flex-1 py-2.5 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-600';
+                nameField.classList.remove('hidden');
+                submitBtn.innerText = 'Create New Account';
+            }
+        }
+
+        function submitAuthForm(e) {
+            e.preventDefault();
+            const email = document.getElementById('authEmailInput').value.trim().toLowerCase();
+            const password = document.getElementById('authPasswordInput').value;
+            const name = document.getElementById('authNameInput').value.trim();
+            const errBox = document.getElementById('authErrorMessage');
+
+            if (activeAuthTab === 'login') {
+                if (!window.userAccounts[email]) {
+                    errBox.innerText = "Account not found with this email. Please check your email or click 'Create Account'.";
+                    errBox.classList.remove('hidden');
+                    return;
+                }
+                if (window.userAccounts[email].password !== password) {
+                    errBox.innerText = "Incorrect password. Please check your credentials and try again.";
+                    errBox.classList.remove('hidden');
+                    return;
+                }
+
+                const userAcc = window.userAccounts[email];
+                window.activeSimulatedUser = {
+                    uid: 'usr_' + Math.random().toString(36).substring(2, 9),
+                    email: email,
+                    displayName: userAcc.name,
+                    isAnonymous: false
+                };
+                updateUserSessionState(window.activeSimulatedUser);
+                updateTripBannerUI();
+                showToast(`Welcome back, ${userAcc.name}!`, "success");
+                closeAuthModal();
+            } else {
+                if (window.userAccounts[email]) {
+                    errBox.innerText = "An account with this email already exists. Please log in instead.";
+                    errBox.classList.remove('hidden');
+                    return;
+                }
+
+                const displayName = name || email.split('@')[0];
+                window.userAccounts[email] = { password: password, name: displayName };
+                
+                window.activeSimulatedUser = {
+                    uid: 'usr_' + Math.random().toString(36).substring(2, 9),
+                    email: email,
+                    displayName: displayName,
+                    isAnonymous: false
+                };
+                updateUserSessionState(window.activeSimulatedUser);
+                updateTripBannerUI();
+                showToast(`Account created! Welcome to Travora, ${displayName}.`, "success");
+                closeAuthModal();
+            }
+        }
+
+        function updateUserSessionState(user) {
+            const userLabel = document.getElementById('userAccountLabel');
+            const syncBadge = document.getElementById('cloudSyncBadge');
+            const loggedInView = document.getElementById('loggedInView');
+            const authForm = document.getElementById('authForm');
+            const authTabsContainer = document.getElementById('authTabsContainer');
+
+            if (user) {
+                const displayName = user.displayName || 'Traveler';
+                if (userLabel) userLabel.innerText = displayName;
+                if (syncBadge) syncBadge.classList.remove('hidden');
+                
+                if (loggedInView) {
+                    loggedInView.classList.remove('hidden');
+                    document.getElementById('profileDisplayName').innerText = displayName;
+                    document.getElementById('profileEmail').innerText = user.email || 'guest@travora.com';
+                    document.getElementById('profileAvatarText').innerText = displayName.charAt(0).toUpperCase();
+                }
+                if (authForm) authForm.classList.add('hidden');
+                if (authTabsContainer) authTabsContainer.classList.add('hidden');
+            } else {
+                if (userLabel) userLabel.innerText = 'Log In';
+                if (syncBadge) syncBadge.classList.add('hidden');
+                if (loggedInView) loggedInView.classList.add('hidden');
+                if (authForm) authForm.classList.remove('hidden');
+                if (authTabsContainer) authTabsContainer.classList.remove('hidden');
+            }
+        }
+
+        function handleSignOut() {
+            window.activeSimulatedUser = null;
+            updateUserSessionState(null);
+            updateTripBannerUI();
+            showToast("Signed out. Operating in Guest Mode.", "info");
+            closeAuthModal();
+        }
+
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toastContainer');
+            if (!container) return;
+
+            const toast = document.createElement('div');
+            const colors = {
+                success: 'bg-emerald-600 text-white',
+                warning: 'bg-amber-500 text-white',
+                info: 'bg-sky-600 text-white',
+                error: 'bg-rose-600 text-white'
+            };
+
+            toast.className = `px-4 py-3 rounded-2xl shadow-xl text-xs font-bold flex items-center gap-2 transition transform translate-y-2 pointer-events-auto ${colors[type] || colors.info}`;
+            toast.innerHTML = `<i class="fa-solid fa-circle-info"></i> ${message}`;
+
+            container.appendChild(toast);
+            setTimeout(() => { toast.classList.remove('translate-y-2'); }, 10);
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            showToast("Theme toggled", "info");
+        }
+
+        function toggleHighContrast(enabled) {
+            if (enabled) document.body.classList.add('high-contrast');
+            else document.body.classList.remove('high-contrast');
+        }
+
+        function toggleLargeText(enabled) {
+            if (enabled) document.body.classList.add('large-text');
+            else document.body.classList.remove('large-text');
+        }
+
+        function toggleLangDropdown() {
+            document.getElementById('navLangDropdown').classList.toggle('hidden');
+        }
+
+        function selectNavLang(code, flag, text) {
+            document.getElementById('navFlagIcon').innerText = flag;
+            document.getElementById('navLangText').innerText = text;
+            toggleLangDropdown();
+            showToast(`Language set to ${text}`, "success");
+        }
+
+        function triggerGlobalSearch(query) {
+            if (!query) return;
+            switchTab('flights');
+            document.getElementById('flightTo').value = query;
+            handleFlightSearch();
+            showToast(`Searching Travora for: ${query}`, "info");
+        }
+    </script>
 </body>
 </html>
