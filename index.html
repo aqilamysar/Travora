@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="light">
 <head>
-    <!-- STREAMING_CHUNK:Configuring document metadata and third-party libraries... -->
+    <!-- STREAMING_CHUNK:Configuring document metadata and Tailwind theme options... -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travora — Your Journey, Your Story</title>
@@ -118,7 +118,7 @@
                 <div class="hidden md:flex flex-1 max-w-md mx-4">
                     <div class="relative w-full">
                         <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                        <input type="text" id="globalNavSearch" placeholder="Search flights, hotels, or destinations..." class="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-0 rounded-full text-xs text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:ring-2 focus:ring-sky-500 outline-none transition" onkeyup="if(event.key==='Enter') triggerGlobalSearch(this.value)">
+                        <input type="text" id="globalNavSearch" placeholder="Search Southeast Asian flights, hotels, or states..." class="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-0 rounded-full text-xs text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:ring-2 focus:ring-sky-500 outline-none transition" onkeyup="if(event.key==='Enter') triggerGlobalSearch(this.value)">
                     </div>
                 </div>
 
@@ -128,26 +128,30 @@
                     <!-- Currency Selector -->
                     <select id="globalCurrencySelect" onchange="changeCurrency(this.value)" class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold rounded-full px-3 py-1.5 border-0 focus:ring-2 focus:ring-sky-500 outline-none cursor-pointer">
                         <option value="MYR">MYR (RM)</option>
+                        <option value="SGD">SGD (S$)</option>
+                        <option value="THB">THB (฿)</option>
+                        <option value="IDR">IDR (Rp)</option>
                         <option value="USD">USD ($)</option>
                         <option value="EUR">EUR (€)</option>
-                        <option value="IDR">IDR (Rp)</option>
                         <option value="JPY">JPY (¥)</option>
                     </select>
 
-                    <!-- Language Selector Flag Dropdown -
+                    <!-- Language Selector Flag Dropdown -->
                     <div class="relative">
                         <button onclick="toggleLangDropdown()" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
                             <span id="navFlagIcon">🇲🇾</span>
                             <span id="navLangText">MY</span>
                             <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
                         </button>
-                        <div id="navLangDropdown" class="hidden absolute right-0 mt-2 w-44 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 py-1.5 z-50">
+                        <div id="navLangDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 py-1.5 z-50">
                             <button onclick="selectNavLang('en', '🇺🇸', 'US')" class="w-full text-left px-3 py-1.5 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 text-slate-700 dark:text-slate-200"><span>🇺🇸</span> English (US)</button>
                             <button onclick="selectNavLang('ms', '🇲🇾', 'MY')" class="w-full text-left px-3 py-1.5 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 text-slate-700 dark:text-slate-200"><span>🇲🇾</span> Bahasa Melayu</button>
-                            <button onclick="selectNavLang('ja', '🇯🇵', 'JP')" class="w-full text-left px-3 py-1.5 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 text-slate-700 dark:text-slate-200"><span>🇯🇵</span> 日本語 (Japanese)</button>
                             <button onclick="selectNavLang('id', '🇮🇩', 'ID')" class="w-full text-left px-3 py-1.5 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 text-slate-700 dark:text-slate-200"><span>🇮🇩</span> Bahasa Indonesia</button>
+                            <button onclick="selectNavLang('th', '🇹🇭', 'TH')" class="w-full text-left px-3 py-1.5 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 text-slate-700 dark:text-slate-200"><span>🇹🇭</span> ไทย (Thai)</button>
+                            <button onclick="selectNavLang('vi', '🇻🇳', 'VN')" class="w-full text-left px-3 py-1.5 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 text-slate-700 dark:text-slate-200"><span>🇻🇳</span> Tiếng Việt</button>
+                            <button onclick="selectNavLang('ja', '🇯🇵', 'JP')" class="w-full text-left px-3 py-1.5 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 text-slate-700 dark:text-slate-200"><span>🇯🇵</span> 日本語 (Japanese)</button>
                         </div>
-                    </div>->
+                    </div>
 
                     <!-- Theme Toggle -->
                     <button onclick="toggleDarkMode()" class="p-2 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition" title="Toggle Dark/Light Mode">
@@ -166,20 +170,20 @@
     </nav>
 
     <!-- SUB-NAVIGATION TABS BAR -->
-    <!-- STREAMING_CHUNK:Rendering sub-navigation tabs... -->
+    <!-- STREAMING_CHUNK:Rendering sub-navigation tabs bar... -->
     <div class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-1 sm:gap-2 overflow-x-auto py-2 scrollbar-none">
             <button id="tabBtn-dashboard" onclick="switchTab('dashboard')" class="tab-btn active px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition bg-sky-50 dark:bg-sky-950/50 text-sky-600 dark:text-sky-400 border border-sky-200 dark:border-sky-800">
                 <i class="fa-solid fa-compass"></i> Overview
             </button>
             <button id="tabBtn-flights" onclick="switchTab('flights')" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
-                <i class="fa-solid fa-plane"></i> Flights
+                <i class="fa-solid fa-plane"></i> SEA Flights
             </button>
             <button id="tabBtn-hotels" onclick="switchTab('hotels')" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
-                <i class="fa-solid fa-hotel"></i> Hotels 
+                <i class="fa-solid fa-hotel"></i> SEA Hotels
             </button>
             <button id="tabBtn-translations" onclick="switchTab('translations')" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
-                <i class="fa-solid fa-language"></i> Language Guide
+                <i class="fa-solid fa-language"></i> Language & Romaji Guide
             </button>
             <button id="tabBtn-payments" onclick="switchTab('payments')" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
                 <i class="fa-solid fa-receipt"></i> Bookings & Payments
@@ -194,7 +198,7 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full">
         
         <!-- PAGE 1: DASHBOARD -->
-        <!-- STREAMING_CHUNK:Rendering main dashboard banner... -->
+        <!-- STREAMING_CHUNK:Rendering main overview banner with first-time user state... -->
         <div id="page-dashboard" class="space-y-6">
             
             <!-- WELCOME BANNER WITH DEFAULT NO-USER STATE -->
@@ -213,7 +217,7 @@
                             Welcome to <span class="text-sky-300">Travora</span>. No trips planned yet—let’s find your next great getaway!
                         </h1>
                         <p id="welcomeSubtext" class="text-xs sm:text-sm text-slate-300 max-w-xl">
-                            Explore hundreds of flights and luxury stays for your next vacation.
+                            Explore hundreds of flights and luxury stays across all 11 Southeast Asian destinations.
                         </p>
                     </div>
 
@@ -252,34 +256,31 @@
 
             <!-- QUICK ACCESS BAR -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Quick Flight Card -->
                 <div onclick="switchTab('flights')" class="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition cursor-pointer group">
                     <div class="w-12 h-12 rounded-2xl bg-sky-500/10 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-plane-up"></i>
                     </div>
-                    <h3 class="font-bold text-base mb-1 text-slate-900 dark:text-white">Flights Search</h3>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Book one way, round trip, or multi-city flights worldwide with custom cabin classes.</p>
-                    <span class="text-xs font-bold text-sky-600 dark:text-sky-400 flex items-center gap-1 group-hover:gap-2 transition-all">Search Flights <i class="fa-solid fa-arrow-right"></i></span>
+                    <h3 class="font-bold text-base mb-1 text-slate-900 dark:text-white">SEA Flights Search</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Book flights across all 11 Southeast Asian nations with regional airport connections.</p>
+                    <span class="text-xs font-bold text-sky-600 dark:text-sky-400 flex items-center gap-1 group-hover:gap-2 transition-all">Search SEA Flights <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
 
-                <!-- Quick Hotel Card -->
                 <div onclick="switchTab('hotels')" class="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition cursor-pointer group">
                     <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-hotel"></i>
                     </div>
-                    <h3 class="font-bold text-base mb-1 text-slate-900 dark:text-white">Hotels & Stays</h3>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Find top luxury resorts, boutique hotels, and villas sorted by rating or price.</p>
-                    <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 flex items-center gap-1 group-hover:gap-2 transition-all">Find Hotels <i class="fa-solid fa-arrow-right"></i></span>
+                    <h3 class="font-bold text-base mb-1 text-slate-900 dark:text-white">SEA Hotels & Resorts</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Find top luxury resorts, villas, and boutique hotels across top Southeast Asian states.</p>
+                    <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 flex items-center gap-1 group-hover:gap-2 transition-all">Find SEA Stays <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
 
-                <!-- Quick Translator Card -->
                 <div onclick="switchTab('translations')" class="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition cursor-pointer group">
                     <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-language"></i>
                     </div>
-                    <h3 class="font-bold text-base mb-1 text-slate-900 dark:text-white">Smart Translator</h3>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Instant voice, camera OCR image translate, and phonetic Japanese speech guides.</p>
-                    <span class="text-xs font-bold text-amber-600 dark:text-amber-400 flex items-center gap-1 group-hover:gap-2 transition-all">Open Translator <i class="fa-solid fa-arrow-right"></i></span>
+                    <h3 class="font-bold text-base mb-1 text-slate-900 dark:text-white">Language & Romaji Guide</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Instant translation with step-by-step Romaji pronunciation guides for Japanese, Thai, & SEA languages.</p>
+                    <span class="text-xs font-bold text-amber-600 dark:text-amber-400 flex items-center gap-1 group-hover:gap-2 transition-all">Open Language Guide <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
             </div>
 
@@ -292,18 +293,19 @@
                     <button onclick="switchTab('payments')" class="text-xs font-bold text-sky-600 dark:text-sky-400 hover:underline">View All</button>
                 </div>
                 <div id="dashBookingsPreview" class="space-y-3">
-                    <!-- Dynamic insertion via JS -->
+                    <!-- Injected via JS -->
                 </div>
             </div>
         </div>
 
-        <!-- PAGE 2: FLIGHTS SEARCH ENGINE -->
-        <!-- STREAMING_CHUNK:Rendering flight search form... -->
+        <!-- PAGE 2: SOUTHEAST ASIAN FLIGHTS SEARCH ENGINE -->
+        <!-- STREAMING_CHUNK:Rendering flight engine forms and airport selection menus... -->
         <div id="page-flights" class="hidden space-y-6">
             <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-lg">
-                <h2 class="text-xl font-extrabold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-                    <i class="fa-solid fa-plane-departure text-sky-500"></i> Flights Search & Booking Engine
+                <h2 class="text-xl font-extrabold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-plane-departure text-sky-500"></i> Southeast Asian Flights Booking Engine
                 </h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">Search direct and connecting flights across all 11 Southeast Asian nations.</p>
 
                 <form onsubmit="handleFlightSearch(event)" class="space-y-6">
                     <!-- 1. Trip Type -->
@@ -319,23 +321,48 @@
                         </label>
                     </div>
 
-                    <!-- 2. Origins, Destinations, Dates -->
+                    <!-- 2. Origins & Destinations across all 11 SEA Countries -->
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                         <div>
-                            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Where From?</label>
+                            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Where From? (Origin Airport)</label>
                             <div class="relative">
                                 <i class="fa-solid fa-plane-departure absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                                <input type="text" id="flightFrom" value="Kuala Lumpur Intl Airport (KUL)" required class="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium focus:ring-2 focus:ring-sky-500 outline-none" placeholder="City or Airport (e.g. KUL, HND)">
+                                <input type="text" id="flightFrom" value="Kuala Lumpur, Malaysia (KUL)" list="seaAirportsList" required class="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium focus:ring-2 focus:ring-sky-500 outline-none">
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Where To? </label>
+                            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Where To? (Destination Airport)</label>
                             <div class="relative">
                                 <i class="fa-solid fa-location-dot absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                                <input type="text" id="flightTo" value="Ngurah Rai Airport, Bali (DPS)" required class="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium focus:ring-2 focus:ring-sky-500 outline-none" placeholder="Destination Airport (e.g. Tokyo HND, Bali DPS)">
+                                <input type="text" id="flightTo" value="Ngurah Rai, Bali, Indonesia (DPS)" list="seaAirportsList" required class="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium focus:ring-2 focus:ring-sky-500 outline-none">
                             </div>
                         </div>
+
+                        <datalist id="seaAirportsList">
+                            <option value="Kuala Lumpur, Malaysia (KUL)">
+                            <option value="Penang, Malaysia (PEN)">
+                            <option value="Kota Kinabalu, Sabah, Malaysia (BKI)">
+                            <option value="Kuching, Sarawak, Malaysia (KCH)">
+                            <option value="Langkawi, Kedah, Malaysia (LGK)">
+                            <option value="Singapore Changi (SIN)">
+                            <option value="Bangkok Suvarnabhumi, Thailand (BKK)">
+                            <option value="Phuket, Thailand (HKT)">
+                            <option value="Chiang Mai, Thailand (CNX)">
+                            <option value="Bali Ngurah Rai, Indonesia (DPS)">
+                            <option value="Jakarta Soekarno-Hatta, Indonesia (CGK)">
+                            <option value="Hanoi Noi Bai, Vietnam (HAN)">
+                            <option value="Ho Chi Minh City, Vietnam (SGN)">
+                            <option value="Manila Ninoy Aquino, Philippines (MNL)">
+                            <option value="Cebu Mactan, Philippines (CEB)">
+                            <option value="Phnom Penh, Cambodia (PNH)">
+                            <option value="Siem Reap, Cambodia (REP)">
+                            <option value="Vientiane Wattay, Laos (VTE)">
+                            <option value="Luang Prabang, Laos (LPQ)">
+                            <option value="Yangon, Myanmar (RGN)">
+                            <option value="Bandar Seri Begawan, Brunei (BWN)">
+                            <option value="Dili Presidente Nicolau Lobato, Timor-Leste (DIL)">
+                        </datalist>
 
                         <div>
                             <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Departure Date</label>
@@ -348,10 +375,10 @@
                         </div>
                     </div>
 
-                    <!-- 3. Travellers, Cabin, Airlines -->
+                    <!-- 3. Passengers Unit & Cabin Class -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
-                            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Travellers</label>
+                            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Travellers Unit</label>
                             <div class="flex items-center gap-2">
                                 <select id="flightAdults" class="w-1/2 px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium focus:ring-2 focus:ring-sky-500 outline-none">
                                     <option value="1">1 Adult</option>
@@ -378,25 +405,28 @@
                         </div>
 
                         <div>
-                            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Preferred Airlines</label>
+                            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Preferred Airline</label>
                             <select id="flightAirline" class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium focus:ring-2 focus:ring-sky-500 outline-none">
-                                <option value="all" selected>All Airlines</option>
-                                <option value="Malaysia Airlines">Malaysia Airlines</option>
-                                <option value="AirAsia">AirAsia</option>
-                                <option value="Singapore Airlines">Singapore Airlines</option>
-                                <option value="ANA Japan">ANA Japan</option>
-                                <option value="Emirates">Emirates</option>
+                                <option value="all" selected>All SEA Airlines</option>
+                                <option value="Singapore Airlines">Singapore Airlines 🇸🇬</option>
+                                <option value="Malaysia Airlines">Malaysia Airlines 🇲🇾</option>
+                                <option value="AirAsia">AirAsia 🇲🇾</option>
+                                <option value="Thai Airways">Thai Airways 🇹🇭</option>
+                                <option value="Vietnam Airlines">Vietnam Airlines 🇻🇳</option>
+                                <option value="Garuda Indonesia">Garuda Indonesia 🇮🇩</option>
+                                <option value="Cebu Pacific">Cebu Pacific 🇵🇭</option>
+                                <option value="Royal Brunei">Royal Brunei Airlines 🇧🇳</option>
                             </select>
                         </div>
                     </div>
 
                     <button type="submit" class="w-full py-3.5 bg-sky-600 hover:bg-sky-700 text-white rounded-2xl font-bold text-xs uppercase tracking-wider shadow-lg hover:shadow-sky-500/25 transition">
-                        <i class="fa-solid fa-magnifying-glass mr-2"></i> Search Available Flights
+                        <i class="fa-solid fa-magnifying-glass mr-2"></i> Search Available SEA Flights
                     </button>
                 </form>
             </div>
 
-            <!-- Flight Search Results List -->
+            <!-- Flight Search Results -->
             <div class="space-y-4">
                 <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center justify-between">
                     <span id="flightSearchTitle">Available Flights (KUL ➔ DPS)</span>
@@ -409,40 +439,46 @@
             </div>
         </div>
 
-        <!-- PAGE 3: HOTELS SEARCH ENGINE -->
-        <!-- STREAMING_CHUNK:Rendering hotel search section... -->
+        <!-- PAGE 3: HOTELS SEARCH ENGINE (SEA STATES & REGIONS) -->
+        <!-- STREAMING_CHUNK:Rendering hotel search form and quick region selectors... -->
         <div id="page-hotels" class="hidden space-y-6">
             <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-lg">
-                <h2 class="text-xl font-extrabold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-                    <i class="fa-solid fa-hotel text-indigo-500"></i> Hotels & Luxury Resorts Engine
+                <h2 class="text-xl font-extrabold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-hotel text-indigo-500"></i> Southeast Asian Hotels & Resorts Engine
                 </h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">Explore accommodations across popular states, provinces, and island regions in Southeast Asia.</p>
 
                 <form onsubmit="handleHotelSearch(event)" class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div class="md:col-span-1">
-                            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Destination / Hotel Location</label>
+                            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Destination State / Region</label>
                             <div class="relative">
                                 <i class="fa-solid fa-map-pin absolute left-3 top-3.5 text-slate-400 text-xs z-10"></i>
-                                <input type="text" id="hotelLocation" value="Seminyak, Bali, Indonesia" list="popularHotelLocationsList" required class="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium focus:ring-2 focus:ring-indigo-500 outline-none">
+                                <input type="text" id="hotelLocation" value="Bali, Indonesia" list="popularHotelLocationsList" required class="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium focus:ring-2 focus:ring-indigo-500 outline-none">
                                 <datalist id="popularHotelLocationsList">
-                                    <option value="Seminyak, Bali, Indonesia">
-                                    <option value="Tokyo, Japan">
-                                    <option value="Kuala Lumpur, Malaysia">
-                                    <option value="Paris, France">
-                                    <option value="Singapore">
-                                    <option value="London, United Kingdom">
+                                    <option value="Bali, Indonesia">
+                                    <option value="Phuket, Thailand">
                                     <option value="Penang, Malaysia">
-                                    <option value="Bangkok, Thailand">
+                                    <option value="Sabah, Malaysia">
+                                    <option value="Singapore City, Singapore">
+                                    <option value="Siem Reap, Cambodia">
+                                    <option value="Luang Prabang, Laos">
+                                    <option value="Cebu, Philippines">
+                                    <option value="Hanoi, Vietnam">
+                                    <option value="Bandar Seri Begawan, Brunei">
+                                    <option value="Dili, Timor-Leste">
+                                    <option value="Yangon, Myanmar">
                                 </datalist>
                             </div>
+                            <!-- Quick Location Selector Pills -->
                             <div class="flex flex-wrap items-center gap-1.5 mt-2">
-                                <span class="text-[10px] font-bold text-slate-400 uppercase mr-1">:</span>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase mr-1">Picks:</span>
                                 <button type="button" onclick="quickSelectHotelLoc('Bali, Indonesia')" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">Bali 🇮🇩</button>
-                                <button type="button" onclick="quickSelectHotelLoc('Tokyo, Japan')" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">Tokyo 🇯🇵</button>
-                                <button type="button" onclick="quickSelectHotelLoc('Kuala Lumpur, Malaysia')" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">KL 🇲🇾</button>
-                                <button type="button" onclick="quickSelectHotelLoc('Paris, France')" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">Paris 🇫🇷</button>
+                                <button type="button" onclick="quickSelectHotelLoc('Phuket, Thailand')" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">Phuket 🇹🇭</button>
+                                <button type="button" onclick="quickSelectHotelLoc('Penang, Malaysia')" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">Penang 🇲🇾</button>
                                 <button type="button" onclick="quickSelectHotelLoc('Singapore')" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">Singapore 🇸🇬</button>
-                                <button type="button" onclick="quickSelectHotelLoc('London, UK')" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">London 🇬🇧</button>
+                                <button type="button" onclick="quickSelectHotelLoc('Hanoi, Vietnam')" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">Hanoi 🇻🇳</button>
+                                <button type="button" onclick="quickSelectHotelLoc('Siem Reap, Cambodia')" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">Siem Reap 🇰🇭</button>
                             </div>
                         </div>
 
@@ -480,7 +516,7 @@
                         </div>
 
                         <div>
-                            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Sort Hotels By</label>
+                            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Sort Stays By</label>
                             <select id="hotelSort" onchange="sortHotels(this.value)" class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium focus:ring-2 focus:ring-indigo-500 outline-none">
                                 <option value="price-asc">Price: Lowest to Highest</option>
                                 <option value="price-desc">Price: Highest to Lowest</option>
@@ -496,7 +532,7 @@
                 </form>
             </div>
 
-            <!-- Hotel Results List -->
+            <!-- Hotel Results Grid -->
             <div class="space-y-4">
                 <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center justify-between">
                     <span>Top Rated Accommodations</span>
@@ -504,27 +540,26 @@
                 </h3>
 
                 <div id="hotelResultsList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Hotel Cards inserted via JS -->
+                    <!-- Cards injected via JS -->
                 </div>
             </div>
         </div>
 
-        <!-- PAGE 4: LANGUAGE GUIDE TRANSLATE BAR -->
-        <!-- STREAMING_CHUNK:Rendering translation tool section... -->
+        <!-- PAGE 4: LANGUAGE GUIDE & ROMAJI TRANSLATE BAR -->
+        <!-- STREAMING_CHUNK:Designing language translator with Romaji pronunciation cards... -->
         <div id="page-translations" class="hidden space-y-6">
             <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-lg">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                     <div>
                         <h2 class="text-xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
-                            <i class="fa-solid fa-language text-amber-500"></i> Smart Language Guide & Audio Assistant
+                            <i class="fa-solid fa-language text-amber-500"></i> Smart Language Guide & Romaji Pronunciation Engine
                         </h2>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Translate phrases, get Japanese Romaji pronunciation guides, and listen to speech output.</p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Translate phrases into Japanese, Thai, Vietnamese, and SEA languages with step-by-step Romaji pronunciation guides.</p>
                     </div>
 
                     <div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-2xl border border-slate-200 dark:border-slate-700">
                         <button onclick="setInputMode('text')" id="modeBtn-text" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-700 text-slate-800 dark:text-white shadow-sm">
                             <i class="fa-solid fa-keyboard mr-1"></i> Text
-            
                         </button>
                         <button onclick="setInputMode('camera')" id="modeBtn-camera" class="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-400 hover:bg-white/50">
                             <i class="fa-solid fa-camera mr-1"></i> Camera/Image
@@ -532,6 +567,7 @@
                     </div>
                 </div>
 
+                <!-- Language Selectors -->
                 <div class="flex items-center gap-3 mb-6 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
                     <div class="flex-1">
                         <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">Translate From</label>
@@ -541,6 +577,7 @@
                             <option value="ms">Bahasa Melayu</option>
                             <option value="id">Bahasa Indonesia</option>
                             <option value="ja">Japanese (日本語)</option>
+                            <option value="th">Thai (ไทย)</option>
                         </select>
                     </div>
 
@@ -551,17 +588,21 @@
                     <div class="flex-1">
                         <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">Translate To</label>
                         <select id="targetLangSelect" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs font-bold outline-none">
-                            <option value="ja" selected>Japanese (日本語)</option>
+                            <option value="ja" selected>Japanese (日本語) + Romaji</option>
+                            <option value="th">Thai (ไทย) + Karaoke Reading</option>
                             <option value="ms">Bahasa Melayu</option>
                             <option value="id">Bahasa Indonesia</option>
+                            <option value="vi">Vietnamese (Tiếng Việt)</option>
+                            <option value="tl">Tagalog (Filipino)</option>
                             <option value="en">English</option>
                         </select>
                     </div>
                 </div>
 
+                <!-- Input Area -->
                 <div class="space-y-4">
                     <div id="inputBoxContainer" class="relative">
-                        <textarea id="transInputText" rows="3" placeholder="Type a sentence (e.g., 'Thank you very much', 'Where is the beach?', 'How much does this cost?')..." class="w-full p-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl text-sm font-medium focus:ring-2 focus:ring-amber-500 outline-none resize-none"></textarea>
+                        <textarea id="transInputText" rows="3" placeholder="Type a sentence (e.g., 'Thank you very much', 'Where is the beach?', 'How much is this?')..." class="w-full p-4 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl text-sm font-medium focus:ring-2 focus:ring-amber-500 outline-none resize-none"></textarea>
                         
                         <div class="absolute right-3 bottom-3 flex items-center gap-2">
                             <button onclick="triggerVoiceDictation()" title="Voice Dictation" class="p-2 rounded-xl bg-slate-200 dark:bg-slate-700 hover:bg-amber-500 hover:text-white text-slate-700 dark:text-slate-200 transition">
@@ -585,16 +626,17 @@
                     </button>
                 </div>
 
+                <!-- TRANSLATED OUTPUT CARD WITH ROMAJI CARD -->
                 <div id="translationOutputCard" class="mt-6 p-6 bg-amber-500/10 border border-amber-500/20 rounded-2xl space-y-4">
                     <div class="flex items-start justify-between">
                         <div>
-                            <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-600 dark:text-amber-400">Translated Result</span>
+                            <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-600 dark:text-amber-400">Translated Native Script</span>
                             <h4 id="translationOutputText" class="text-xl font-bold text-slate-900 dark:text-white mt-1">
                                 Translation will appear here...
                             </h4>
                         </div>
                         <div class="flex items-center gap-2">
-                            <button id="speakBtn" onclick="speakTranslation()" class="p-3 bg-amber-500 hover:bg-amber-600 text-white rounded-xl shadow-md transition" title="Listen / Play Audio">
+                            <button id="speakBtn" onclick="speakTranslation()" class="p-3 bg-amber-500 hover:bg-amber-600 text-white rounded-xl shadow-md transition" title="Listen / Play Speech Audio">
                                 <i class="fa-solid fa-volume-high text-sm"></i>
                             </button>
                             <button onclick="saveCurrentTranslation()" class="p-3 bg-white dark:bg-slate-800 border border-amber-500/30 text-amber-600 dark:text-amber-400 hover:bg-amber-500 hover:text-white rounded-xl shadow-sm transition" title="Save to Phrasebook">
@@ -603,15 +645,20 @@
                         </div>
                     </div>
 
+                    <!-- Step-by-Step Romaji Pronunciation Guide -->
                     <div class="pt-3 border-t border-amber-500/20">
-                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">Pronunciation & Romaji Reading</span>
-                        <p id="phoneticGuideText" class="text-xs font-mono text-amber-700 dark:text-amber-300 font-semibold mt-0.5">
+                        <div class="flex items-center gap-1.5 mb-1">
+                            <i class="fa-solid fa-comment-dots text-amber-500 text-xs"></i>
+                            <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400">Romaji / Phonetic Pronunciation Guide (How to Say It)</span>
+                        </div>
+                        <p id="phoneticGuideText" class="text-sm font-mono text-amber-700 dark:text-amber-300 font-bold bg-white/60 dark:bg-slate-800/60 p-3 rounded-xl border border-amber-500/20">
                             [Phonetic guide & Romaji reading will render here]
                         </p>
                     </div>
                 </div>
             </div>
 
+            <!-- SAVED PHRASEBOOK -->
             <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
                 <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center justify-between mb-4">
                     <span class="flex items-center gap-2"><i class="fa-solid fa-bookmark text-amber-500"></i> Saved Phrasebook</span>
@@ -634,6 +681,7 @@
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     <div class="lg:col-span-2 space-y-6">
+                        <!-- Voucher Code Input -->
                         <div class="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl flex items-center gap-3">
                             <i class="fa-solid fa-ticket text-emerald-600 text-xl"></i>
                             <div class="flex-1">
@@ -645,6 +693,7 @@
                             </button>
                         </div>
 
+                        <!-- Payment Methods -->
                         <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Select Payment Method</label>
                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -654,9 +703,16 @@
                                 <button type="button" onclick="selectPaymentMethod('fpx')" id="payMethod-fpx" class="p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 text-center font-bold text-xs transition flex flex-col items-center gap-2 text-slate-600 dark:text-slate-300">
                                     <i class="fa-solid fa-building-columns text-xl"></i> FPX Online
                                 </button>
+                                <button type="button" onclick="selectPaymentMethod('ewallet')" id="payMethod-ewallet" class="p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 text-center font-bold text-xs transition flex flex-col items-center gap-2 text-slate-600 dark:text-slate-300">
+                                    <i class="fa-solid fa-mobile-screen-button text-xl"></i> E-Wallet
+                                </button>
+                                <button type="button" onclick="selectPaymentMethod('qr')" id="payMethod-qr" class="p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 text-center font-bold text-xs transition flex flex-col items-center gap-2 text-slate-600 dark:text-slate-300">
+                                    <i class="fa-solid fa-qrcode text-xl"></i> DuitNow QR
+                                </button>
                             </div>
                         </div>
 
+                        <!-- Payment Information Fields -->
                         <div id="cardFields" class="space-y-4">
                             <div>
                                 <label class="block text-[11px] font-bold text-slate-400 uppercase mb-1">Confirmation Email Address</label>
@@ -683,6 +739,7 @@
                         </button>
                     </div>
 
+                    <!-- Order Summary Box -->
                     <div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-3xl border border-slate-200 dark:border-slate-700 h-fit space-y-4">
                         <h3 class="font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider pb-3 border-b border-slate-200 dark:border-slate-700">
                             Order Summary
@@ -694,7 +751,7 @@
                                 <span id="summaryTitle" class="font-bold text-slate-800 dark:text-slate-200">Malaysia Airlines (KUL - DPS)</span>
                             </div>
                             <div class="flex justify-between text-slate-600 dark:text-slate-400">
-                                <span>Travellers:</span>
+                                <span>Travellers Unit:</span>
                                 <span>2 Adults</span>
                             </div>
                             <div class="flex justify-between text-slate-600 dark:text-slate-400">
@@ -719,6 +776,7 @@
                 </div>
             </div>
 
+            <!-- Booking History Table -->
             <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
                 <h3 class="font-bold text-base text-slate-900 dark:text-white mb-4 flex items-center justify-between">
                     <span class="flex items-center gap-2"><i class="fa-solid fa-receipt text-sky-500"></i> Payment History & Manage Bookings</span>
@@ -761,9 +819,11 @@
                                 <label class="block text-xs font-bold mb-1">Preferred Currency</label>
                                 <select onchange="changeCurrency(this.value)" class="w-full p-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-semibold">
                                     <option value="MYR">MYR - Malaysian Ringgit (RM)</option>
+                                    <option value="SGD">SGD - Singapore Dollar (S$)</option>
+                                    <option value="THB">THB - Thai Baht (฿)</option>
+                                    <option value="IDR">IDR - Indonesian Rupiah (Rp)</option>
                                     <option value="USD">USD - US Dollar ($)</option>
                                     <option value="EUR">EUR - Euro (€)</option>
-                                    <option value="IDR">IDR - Indonesian Rupiah (Rp)</option>
                                     <option value="JPY">JPY - Japanese Yen (¥)</option>
                                 </select>
                             </div>
@@ -772,8 +832,10 @@
                                 <select class="w-full p-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-semibold">
                                     <option value="en">English (US)</option>
                                     <option value="ms">Bahasa Melayu</option>
-                                    <option value="ja">Japanese (日本語)</option>
                                     <option value="id">Bahasa Indonesia</option>
+                                    <option value="ja">Japanese (日本語)</option>
+                                    <option value="th">Thai (ไทย)</option>
+                                    <option value="vi">Vietnamese (Tiếng Việt)</option>
                                 </select>
                             </div>
                         </div>
@@ -824,7 +886,7 @@
     </main>
 
     <!-- FOOTER -->
-    <!-- STREAMING_CHUNK:Rendering page footer... -->
+    <!-- STREAMING_CHUNK:Rendering website footer... -->
     <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-6">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
             <div class="flex items-center gap-2">
@@ -927,12 +989,12 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        /* STREAMING_CHUNK:Initializing state logic and function handlers... */
+        /* STREAMING_CHUNK:Initializing global variables, state handlers, and start state... */
         let activeTab = 'dashboard';
         let currentCurrency = 'MYR';
         let currencySymbol = 'RM';
         let currencyRate = 1.0;
-        let hasActiveTrip = false;
+        let hasActiveTrip = false; // Default first-time user clean slate
         let selectedPaymentMethod = 'card';
         let activeAuthTab = 'login';
 
@@ -971,7 +1033,7 @@
             if (targetPage) targetPage.classList.remove('hidden');
         }
 
-        /* STREAMING_CHUNK:Executing countdown timer logic... */
+        /* STREAMING_CHUNK:Executing countdown timer and banner state handler... */
         let countdownTimerInterval = null;
         function initCountdown() {
             if (countdownTimerInterval) clearInterval(countdownTimerInterval);
@@ -1018,11 +1080,11 @@
 
             if (hasActiveTrip) {
                 heading.innerHTML = `Welcome Back, <span class="text-sky-300">${userName}</span>. Your trip to <span class="text-amber-300">Bali</span> is in <span id="daysCountText" class="text-emerald-300">14</span> days!`;
-                subtext.innerText = "Pack your bags! Everything is synced for your upcoming trip to Ngurah Rai Airport (DPS).";
+                subtext.innerText = "Pack your bags! Everything is synced for your upcoming flight to Ngurah Rai Airport (DPS).";
                 if (countdownBox) countdownBox.classList.remove('hidden');
             } else {
                 heading.innerHTML = `Welcome to Travora, <span class="text-sky-300">${userName}</span>. No trips planned yet—let’s find your next great getaway!`;
-                subtext.innerText = "Explore hundreds of flights and luxury stays for your next vacation.";
+                subtext.innerText = "Explore hundreds of flights and luxury stays across all 11 Southeast Asian destinations.";
                 if (countdownBox) countdownBox.classList.add('hidden');
             }
         }
@@ -1039,8 +1101,8 @@
 
         function changeCurrency(val) {
             currentCurrency = val;
-            const rates = { MYR: 1.0, USD: 0.22, EUR: 0.20, IDR: 3500, JPY: 33.5 };
-            const symbols = { MYR: 'RM', USD: '$', EUR: '€', IDR: 'Rp', JPY: '¥' };
+            const rates = { MYR: 1.0, SGD: 0.30, THB: 8.2, IDR: 3500, USD: 0.22, EUR: 0.20, JPY: 33.5 };
+            const symbols = { MYR: 'RM', SGD: 'S$', THB: '฿', IDR: 'Rp', USD: '$', EUR: '€', JPY: '¥' };
             currencyRate = rates[val] || 1.0;
             currencySymbol = symbols[val] || 'RM';
             
@@ -1056,7 +1118,7 @@
             return `${currencySymbol} ${converted.toLocaleString(undefined, { minimumFractionDigits: currentCurrency === 'IDR' ? 0 : 2, maximumFractionDigits: currentCurrency === 'IDR' ? 0 : 2 })}`;
         }
 
-        /* STREAMING_CHUNK:Managing flight booking engine logic... */
+        /* STREAMING_CHUNK:Configuring Southeast Asian Flight search engine... */
         let currentFlightResults = [
             { id: 1, airline: 'Malaysia Airlines', code: 'MH-715', dept: '09:30 AM', arr: '12:35 PM', duration: '3h 05m', price: 640, class: 'Economy', fromCode: 'KUL', toCode: 'DPS' },
             { id: 2, airline: 'AirAsia', code: 'AK-380', dept: '01:15 PM', arr: '04:20 PM', duration: '3h 05m', price: 420, class: 'Economy', fromCode: 'KUL', toCode: 'DPS' },
@@ -1115,34 +1177,34 @@
             const toCode = extractCode(to, 'DPS');
 
             let basePrice = 450;
-            if (to.toLowerCase().includes('japan') || to.toLowerCase().includes('tokyo') || toCode === 'HND' || toCode === 'NRT') basePrice = 1450;
-            else if (to.toLowerCase().includes('london') || to.toLowerCase().includes('paris') || toCode === 'LHR') basePrice = 2800;
-            else if (to.toLowerCase().includes('singapore') || toCode === 'SIN') basePrice = 320;
+            if (to.toLowerCase().includes('singapore') || toCode === 'SIN') basePrice = 320;
             else if (to.toLowerCase().includes('bali') || toCode === 'DPS') basePrice = 550;
             else if (to.toLowerCase().includes('bangkok') || toCode === 'BKK') basePrice = 480;
-            else basePrice = 600 + (to.length * 25);
+            else if (to.toLowerCase().includes('hanoi') || toCode === 'HAN') basePrice = 520;
+            else if (to.toLowerCase().includes('manila') || toCode === 'MNL') basePrice = 590;
+            else basePrice = 420 + (to.length * 15);
 
             const cabinMultiplier = cabin === 'business' ? 2.5 : (cabin === 'premium' ? 1.6 : (cabin === 'first' ? 4.0 : 1.0));
             const finalPrice = Math.round(basePrice * cabinMultiplier * adults);
 
-            const airlines = selectedAirline === 'all' 
-                ? ['Malaysia Airlines', 'AirAsia', 'ANA Japan', 'Singapore Airlines'] 
-                : [selectedAirline, 'AirAsia', 'Emirates'];
+            const seaAirlinesList = selectedAirline === 'all' 
+                ? ['Singapore Airlines', 'AirAsia', 'Malaysia Airlines', 'Thai Airways', 'Vietnam Airlines'] 
+                : [selectedAirline, 'AirAsia', 'Garuda Indonesia'];
 
             currentFlightResults = [
-                { id: 101, airline: airlines[0] || 'Malaysia Airlines', code: `${fromCode.substring(0,2)}-${Math.floor(100+Math.random()*899)}`, dept: '08:15 AM', arr: '11:45 AM', duration: '3h 30m', price: finalPrice, class: cabin.toUpperCase(), fromCode, toCode },
-                { id: 102, airline: airlines[1] || 'AirAsia', code: `AK-${Math.floor(100+Math.random()*899)}`, dept: '01:30 PM', arr: '05:00 PM', duration: '3h 30m', price: Math.round(finalPrice * 0.75), class: 'ECONOMY', fromCode, toCode },
-                { id: 103, airline: airlines[2] || 'Singapore Airlines', code: `SQ-${Math.floor(100+Math.random()*899)}`, dept: '06:45 PM', arr: '10:15 PM', duration: '3h 30m', price: Math.round(finalPrice * 1.35), class: cabin.toUpperCase(), fromCode, toCode }
+                { id: 101, airline: seaAirlinesList[0] || 'Malaysia Airlines', code: `${fromCode.substring(0,2)}-${Math.floor(100+Math.random()*899)}`, dept: '08:15 AM', arr: '11:45 AM', duration: '3h 30m', price: finalPrice, class: cabin.toUpperCase(), fromCode, toCode },
+                { id: 102, airline: seaAirlinesList[1] || 'AirAsia', code: `AK-${Math.floor(100+Math.random()*899)}`, dept: '01:30 PM', arr: '05:00 PM', duration: '3h 30m', price: Math.round(finalPrice * 0.75), class: 'ECONOMY', fromCode, toCode },
+                { id: 103, airline: seaAirlinesList[2] || 'Singapore Airlines', code: `SQ-${Math.floor(100+Math.random()*899)}`, dept: '06:45 PM', arr: '10:15 PM', duration: '3h 30m', price: Math.round(finalPrice * 1.35), class: cabin.toUpperCase(), fromCode, toCode }
             ];
 
             const titleEl = document.getElementById('flightSearchTitle');
-            if (titleEl) titleEl.innerText = `Available Flights (${fromCode} ➔ ${toCode})`;
+            if (titleEl) titleEl.innerText = `Available SEA Flights (${fromCode} ➔ ${toCode})`;
 
             const countEl = document.getElementById('flightResultsCount');
             if (countEl) countEl.innerText = `Showing ${currentFlightResults.length} options for ${from} to ${to}`;
 
             renderFlights();
-            showToast(`Updated flight options: ${fromCode} to ${toCode}`, "success");
+            showToast(`Updated SEA flights: ${fromCode} to ${toCode}`, "success");
         }
 
         function bookFlightItem(title, amount) {
@@ -1153,7 +1215,7 @@
             showToast(`Selected ${title} for checkout`, "info");
         }
 
-        /* STREAMING_CHUNK:Configuring hotel search engine and rendering... */
+        /* STREAMING_CHUNK:Configuring Southeast Asian hotel search engine... */
         function quickSelectHotelLoc(locName) {
             const locInput = document.getElementById('hotelLocation');
             if (locInput) {
@@ -1163,12 +1225,12 @@
         }
 
         let currentHotelResults = [
-            { id: 101, name: 'Seminyak Beach Luxury Resort', location: 'Bali, Indonesia', rating: 4.9, reviews: 312, price: 350, tag: 'Beachfront', img: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80' },
+            { id: 101, name: 'Seminyak Beach Luxury Resort', location: 'Bali, Indonesia', rating: 4.9, reviews: 312, price: 350, tag: '5-Star Luxury', img: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80' },
             { id: 102, name: 'Ubud Jungle Sanctuary Villa', location: 'Bali, Indonesia', rating: 4.8, reviews: 245, price: 280, tag: 'Private Pool', img: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=400&q=80' },
-            { id: 103, name: 'Canggu Ocean View Suites', location: 'Bali, Indonesia', rating: 4.6, reviews: 180, price: 190, tag: 'Ocean View', img: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=400&q=80' },
-            { id: 104, name: 'Nusa Dua Horizon Palace', location: 'Bali, Indonesia', rating: 4.7, reviews: 156, price: 420, tag: '5-Star Luxury', img: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=400&q=80' },
-            { id: 105, name: 'Kuta Heritage Boutique Hotel', location: 'Bali, Indonesia', rating: 4.4, reviews: 210, price: 140, tag: 'City Center', img: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=400&q=80' },
-            { id: 106, name: 'Uluwatu Cliffside Retreat', location: 'Bali, Indonesia', rating: 4.9, reviews: 98, price: 510, tag: 'Infinity Pool', img: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=400&q=80' }
+            { id: 103, name: 'Canggu Ocean View Suites', location: 'Bali, Indonesia', rating: 4.6, reviews: 180, price: 190, tag: 'Scenic View', img: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=400&q=80' },
+            { id: 104, name: 'Nusa Dua Horizon Palace', location: 'Bali, Indonesia', rating: 4.7, reviews: 156, price: 420, tag: 'Spa & Wellness', img: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=400&q=80' },
+            { id: 105, name: 'Kuta Heritage Boutique Hotel', location: 'Bali, Indonesia', rating: 4.4, reviews: 210, price: 140, tag: 'Best Value', img: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=400&q=80' },
+            { id: 106, name: 'Uluwatu Cliffside Retreat', location: 'Bali, Indonesia', rating: 4.9, reviews: 98, price: 510, tag: 'Executive Suite', img: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=400&q=80' }
         ];
 
         function renderHotels() {
@@ -1176,7 +1238,7 @@
             if (!container) return;
 
             if (currentHotelResults.length === 0) {
-                container.innerHTML = `<div class="col-span-3 p-8 text-center text-slate-400 bg-white dark:bg-slate-900 rounded-2xl border border-dashed border-slate-200 dark:border-slate-800">No hotel stays found for this location.</div>`;
+                container.innerHTML = `<div class="col-span-3 p-8 text-center text-slate-400 bg-white dark:bg-slate-900 rounded-2xl border border-dashed border-slate-200 dark:border-slate-800">No hotel stays found for this region.</div>`;
                 return;
             }
 
@@ -1219,13 +1281,13 @@
             const locLower = locationInput.toLowerCase();
             let basePrice = 280;
 
-            if (locLower.includes('tokyo') || locLower.includes('japan')) basePrice = 580;
-            else if (locLower.includes('paris') || locLower.includes('london')) basePrice = 750;
-            else if (locLower.includes('singapore')) basePrice = 490;
-            else if (locLower.includes('kuala lumpur') || locLower.includes('malaysia')) basePrice = 220;
-            else if (locLower.includes('penang')) basePrice = 190;
-            else if (locLower.includes('bangkok') || locLower.includes('thailand')) basePrice = 240;
-            else basePrice = 290 + (locationInput.length * 10);
+            if (locLower.includes('singapore')) basePrice = 490;
+            else if (locLower.includes('bali') || locLower.includes('indonesia')) basePrice = 320;
+            else if (locLower.includes('phuket') || locLower.includes('thailand')) basePrice = 290;
+            else if (locLower.includes('penang') || locLower.includes('malaysia')) basePrice = 220;
+            else if (locLower.includes('hanoi') || locLower.includes('vietnam')) basePrice = 240;
+            else if (locLower.includes('siem reap') || locLower.includes('cambodia')) basePrice = 210;
+            else basePrice = 270 + (locationInput.length * 8);
 
             const roomMultiplier = rooms * 0.95;
             const calcPrice = (mult) => Math.round(basePrice * mult * roomMultiplier);
@@ -1271,32 +1333,36 @@
             showToast(`Selected ${title} for booking`, "info");
         }
 
-        /* STREAMING_CHUNK:Configuring translator and speech synthesizer... */
+        /* STREAMING_CHUNK:Configuring translator dictionary and Romaji generator... */
         const travelDictionary = {
-            "thank you": { ja: "ありがとう", romaji: "Arigatou", ms: "Terima kasih", id: "Terima kasih" },
-            "thank you very much": { ja: "ありがとうございます", romaji: "Arigatou gozaimasu", ms: "Terima kasih banyak", id: "Terima kasih banyak" },
-            "good morning": { ja: "おはようございます", romaji: "Ohayou gozaimasu", ms: "Selamat pagi", id: "Selamat pagi" },
-            "hello": { ja: "こんにちは", romaji: "Konnichiwa", ms: "Helo / Selamat sebahagia", id: "Halo" },
-            "where is the beach?": { ja: "ビーチはどこですか？", romaji: "Biichi wa doko desu ka?", ms: "Di manakah pantai?", id: "Di mana pantainya?" },
-            "how much is this?": { ja: "内容はいくらですか？", romaji: "Kore wa ikura desu ka?", ms: "Berapakah harga ini?", id: "Berapa harganya ini?" },
-            "where is the toilet?": { ja: "お手洗いはどこですか？", romaji: "Otearai wa doko desu ka?", ms: "Tandas di mana?", id: "Di mana toiletnya?" },
-            "delicious": { ja: "美味しい", romaji: "Oishii", ms: "Sedap", id: "Enak" },
-            "help me": { ja: "助けてください", romaji: "Tasukete kudasai", ms: "Tolong saya", id: "Tolong saya" }
+            "thank you": { ja: "ありがとう", jaRomaji: "A-ri-ga-tou", th: "ขอบคุณ", thRomaji: "Khop Khun", ms: "Terima kasih", msRomaji: "Teh-ree-mah Kah-seh", id: "Terima kasih", idRomaji: "Teh-ree-mah Kah-seh", vi: "Cảm ơn", viRomaji: "Kam On", tl: "Salamat", tlRomaji: "Sah-lah-mat" },
+            "thank you very much": { ja: "ありがとうございます", jaRomaji: "A-ri-ga-tou go-zai-ma-su", th: "ขอบคุณมากครับ", thRomaji: "Khop Khun Mak Krap", ms: "Terima kasih banyak", msRomaji: "Teh-ree-mah Kah-seh Bah-nyak", id: "Terima kasih banyak", idRomaji: "Teh-ree-mah Kah-seh Bah-nyak", vi: "Cảm ơn rất nhiều", viRomaji: "Kam On Rat Nhieu", tl: "Maraming salamat", tlRomaji: "Mah-rah-ming Sah-lah-mat" },
+            "good morning": { ja: "おはようございます", jaRomaji: "O-ha-you go-zai-ma-su", th: "สวัสดีตอนเช้า", thRomaji: "Sa-wat-dee Ton Chao", ms: "Selamat pagi", msRomaji: "Seh-lah-mat Pah-gee", id: "Selamat pagi", idRomaji: "Seh-lah-mat Pah-gee", vi: "Chào buổi sáng", viRomaji: "Chow Buoi Sang", tl: "Magandang umaga", tlRomaji: "Mah-gan-dang Oo-mah-gah" },
+            "hello": { ja: "こんにちは", jaRomaji: "Kon-ni-chi-wa", th: "สวัสดี", thRomaji: "Sa-wat-dee", ms: "Selamat sejahtera", msRomaji: "Seh-lah-mat Seh-jah-teh-rah", id: "Halo", idRomaji: "Hah-loh", vi: "Xin chào", viRomaji: "Sin Chow", tl: "Kamusta", tlRomaji: "Kah-moos-tah" },
+            "where is the beach?": { ja: "ビーチはどこですか？", jaRomaji: "Bii-chi wa do-ko de-su ka?", th: "ชายหาดอยู่ที่ไหน", thRomaji: "Chai Hat Yu Thee Nai?", ms: "Di manakah pantai?", msRomaji: "Dee mah-nah-kah Pahn-tai?", id: "Di mana pantainya?", idRomaji: "Dee mah-nah pahn-tai-nya?", vi: "Bãi biển ở đâu?", viRomaji: "Bai Bien O Dau?", tl: "Nasaan ang dagat?", tlRomaji: "Nah-sah-an ang dah-gat?" },
+            "how much is this?": { ja: "これはいくらですか？", jaRomaji: "Ko-re wa i-ku-ra de-su ka?", th: "อันนี้ราคาเท่าไหร่", thRomaji: "An Nee Ra-kha Tao Rai?", ms: "Berapakah harga ini?", msRomaji: "Beh-rah-pah-kah Har-gah ee-nee?", id: "Berapa harganya ini?", idRomaji: "Beh-rah-pah har-gah-nya ee-nee?", vi: "Cái này bao nhiêu tiền?", viRomaji: "Cai Nay Bao Nhieu Tien?", tl: "Magkano ito?", tlRomaji: "Mag-kah-noh ee-toh?" },
+            "where is the toilet?": { ja: "お手洗いはどこですか？", jaRomaji: "O-te-a-ra-i wa do-ko de-su ka?", th: "ห้องน้ำอยู่ที่ไหน", thRomaji: "Hong Nam Yu Thee Nai?", ms: "Di manakah tandas?", msRomaji: "Dee mah-nah-kah Tahn-das?", id: "Di mana toiletnya?", idRomaji: "Dee mah-nah toy-let-nya?", vi: "Nhà vệ sinh ở đâu?", viRomaji: "Nha Ve Sinh O Dau?", tl: "Nasaan ang banyo?", tlRomaji: "Nah-sah-an ang bah-nyoh?" },
+            "delicious": { ja: "美味しい", jaRomaji: "Oi-shii", th: "อร่อย", thRomaji: "A-roy", ms: "Sedap", msRomaji: "Seh-dap", id: "Enak", idRomaji: "Eh-nak", vi: "Ngon", viRomaji: "Ngon", tl: "Masarap", tlRomaji: "Mah-sah-rap" }
         };
 
-        function convertToRomajiReading(text, targetLang) {
-            if (targetLang !== 'ja') return '';
+        function generateRomajiReadingGuide(text, targetLang) {
             const lower = text.toLowerCase().trim();
-            for (let key in travelDictionary) {
-                if (travelDictionary[key].ja === text || key === lower) {
-                    return `Romaji (Reading): ${travelDictionary[key].romaji}`;
-                }
+            if (travelDictionary[lower]) {
+                const item = travelDictionary[lower];
+                if (targetLang === 'ja' && item.jaRomaji) return `Romaji Reading: "${item.jaRomaji}"`;
+                if (targetLang === 'th' && item.thRomaji) return `Karaoke Pronunciation: "${item.thRomaji}"`;
+                if (targetLang === 'ms' && item.msRomaji) return `Phonetic Pronunciation: "${item.msRomaji}"`;
+                if (targetLang === 'id' && item.idRomaji) return `Phonetic Pronunciation: "${item.idRomaji}"`;
+                if (targetLang === 'vi' && item.viRomaji) return `Phonetic Pronunciation: "${item.viRomaji}"`;
+                if (targetLang === 'tl' && item.tlRomaji) return `Phonetic Pronunciation: "${item.tlRomaji}"`;
             }
+
             const romajiMatch = text.match(/\(([^)]+)\)/);
             if (romajiMatch) {
-                return `Romaji (Reading): ${romajiMatch[1]}`;
+                return `Romaji / Phonetic Guide: "${romajiMatch[1]}"`;
             }
-            return `Romaji (Reading Guide): ${text}`;
+
+            return `Romaji / Phonetic Reading Guide: "${text}"`;
         }
 
         async function performTranslation() {
@@ -1311,18 +1377,23 @@
             }
 
             outputText.innerText = "Translating sentence...";
-            phoneticGuide.innerText = "Generating pronunciation guide & Romaji reading...";
+            phoneticGuide.innerText = "Generating step-by-step Romaji pronunciation guide...";
 
             const lower = input.toLowerCase();
 
             if (travelDictionary[lower]) {
                 const match = travelDictionary[lower];
                 if (targetLang === 'ja') {
-                    outputText.innerHTML = `${match.ja} <span class="block text-sm text-amber-600 dark:text-amber-400 font-normal mt-1">(${match.romaji})</span>`;
-                    phoneticGuide.innerText = `Romaji Reading: "${match.romaji}" • Pronunciation: [${match.romaji.replace(/([aeiou])/g, '$1-')}]`;
+                    outputText.innerHTML = `${match.ja} <span class="block text-sm text-amber-600 dark:text-amber-400 font-normal mt-1">(${match.jaRomaji})</span>`;
+                    phoneticGuide.innerText = `Romaji Reading: "${match.jaRomaji}" • Syllables: [${match.jaRomaji.replace(/-/g, ' • ')}]`;
+                } else if (targetLang === 'th') {
+                    outputText.innerHTML = `${match.th} <span class="block text-sm text-amber-600 dark:text-amber-400 font-normal mt-1">(${match.thRomaji})</span>`;
+                    phoneticGuide.innerText = `Karaoke Thai Pronunciation: "${match.thRomaji}"`;
                 } else {
-                    outputText.innerText = match[targetLang] || input;
-                    phoneticGuide.innerText = `Phonetic: [${(match[targetLang] || input)}]`;
+                    const trans = match[targetLang] || input;
+                    const guide = match[`${targetLang}Romaji`] || trans;
+                    outputText.innerText = trans;
+                    phoneticGuide.innerText = `Phonetic Pronunciation: "${guide}"`;
                 }
                 showToast("Translation completed", "success");
                 return;
@@ -1333,13 +1404,14 @@
                 const data = await res.json();
                 if (data && data.responseData && data.responseData.translatedText) {
                     let transText = data.responseData.translatedText;
+                    const romajiGuide = generateRomajiReadingGuide(input, targetLang);
+                    
                     if (targetLang === 'ja') {
-                        const romajiText = convertToRomajiReading(transText, 'ja');
-                        outputText.innerHTML = `${transText} <span class="block text-sm text-amber-600 dark:text-amber-400 font-normal mt-1">(${romajiText.replace('Romaji (Reading): ', '')})</span>`;
-                        phoneticGuide.innerText = `${romajiText} • Japanese Audio Available`;
+                        outputText.innerHTML = `${transText} <span class="block text-sm text-amber-600 dark:text-amber-400 font-normal mt-1">(${transText})</span>`;
+                        phoneticGuide.innerText = `${romajiGuide} • Japanese Web Audio Ready`;
                     } else {
                         outputText.innerText = transText;
-                        phoneticGuide.innerText = `Phonetic Guide: [${transText}]`;
+                        phoneticGuide.innerText = `${romajiGuide} • Audio Ready`;
                     }
                     showToast("Translation completed", "success");
                 } else {
@@ -1363,7 +1435,7 @@
                 };
                 recognition.start();
             } else {
-                document.getElementById('transInputText').value = "Where is the nearest beach?";
+                document.getElementById('transInputText').value = "Thank you very much";
                 performTranslation();
                 showToast("Voice input simulated", "info");
             }
@@ -1372,14 +1444,14 @@
         function handleCameraUpload(e) {
             const file = e.target.files[0];
             if (file) {
-                document.getElementById('transInputText').value = "Thank you very much";
+                document.getElementById('transInputText').value = "Where is the beach?";
                 performTranslation();
-                showToast(`Scanned image: ${file.name}`, "success");
+                showToast(`Scanned image text: ${file.name}`, "success");
             }
         }
 
         function setInputMode(mode) {
-            ['text', 'voice', 'camera'].forEach(m => {
+            ['text', 'camera'].forEach(m => {
                 const btn = document.getElementById(`modeBtn-${m}`);
                 if (btn) btn.className = 'px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-400 hover:bg-white/50';
             });
@@ -1403,7 +1475,7 @@
             showToast("Translation languages swapped", "info");
         }
 
-        /* STREAMING_CHUNK:Configuring speech synthesis audio engine... */
+        /* STREAMING_CHUNK:Configuring speech synthesis audio output... */
         let availableVoices = [];
         if ('speechSynthesis' in window) {
             const loadVoices = () => { availableVoices = window.speechSynthesis.getVoices(); };
@@ -1424,11 +1496,11 @@
 
             const keywordsMap = {
                 'ja': ['japan', 'japanese', '日本語', 'kyoko', 'otoya', 'haruka', 'sakura', 'sho', 'hattori', 'google 日本語'],
+                'th': ['thai', 'thailand', 'ไทย'],
                 'ms': ['malay', 'malaysia', 'melayu'],
                 'id': ['indonesia', 'indonesian'],
-                'en': ['english', 'us', 'uk'],
-                'fr': ['french', 'france'],
-                'es': ['spanish', 'spain']
+                'vi': ['vietnam', 'vietnamese'],
+                'en': ['english', 'us', 'uk']
             };
             const keywords = keywordsMap[code] || ['japan', 'japanese', '日本語'];
             return voices.find(v => keywords.some(kw => v.name.toLowerCase().includes(kw))) || null;
@@ -1473,11 +1545,12 @@
 
             const langMeta = {
                 'ja': { code: 'ja-JP', name: 'Japanese' },
+                'th': { code: 'th-TH', name: 'Thai' },
                 'ms': { code: 'ms-MY', name: 'Malay' },
                 'id': { code: 'id-ID', name: 'Indonesian' },
-                'en': { code: 'en-US', name: 'English' },
-                'fr': { code: 'fr-FR', name: 'French' },
-                'es': { code: 'es-ES', name: 'Spanish' }
+                'vi': { code: 'vi-VN', name: 'Vietnamese' },
+                'tl': { code: 'tl-PH', name: 'Tagalog' },
+                'en': { code: 'en-US', name: 'English' }
             };
 
             const langConfig = langMeta[targetLang] || { code: 'ja-JP', name: 'Japanese' };
@@ -1516,6 +1589,7 @@
         function saveCurrentTranslation() {
             const source = document.getElementById('transInputText').value;
             const target = document.getElementById('translationOutputText').innerText;
+            const guide = document.getElementById('phoneticGuideText').innerText;
             const lang = document.getElementById('targetLangSelect').value;
 
             if (!source || target.includes('Translation will appear')) {
@@ -1527,10 +1601,11 @@
                 docId: 'trans_' + Date.now(),
                 source: source,
                 target: target,
+                guide: guide,
                 lang: lang
             });
             renderSavedTranslations();
-            showToast("Saved to your personal phrasebook!", "success");
+            showToast("Saved to your phrasebook with Romaji pronunciation!", "success");
         }
 
         function renderSavedTranslations() {
@@ -1556,6 +1631,7 @@
                     <div>
                         <span class="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase">${item.lang}</span>
                         <h5 class="font-bold text-xs text-slate-900 dark:text-white">${item.target}</h5>
+                        <p class="text-[10px] text-amber-700 dark:text-amber-300 font-mono font-bold mt-0.5">${item.guide || ''}</p>
                         <p class="text-[11px] text-slate-400 font-medium">"${item.source}"</p>
                     </div>
                     <div class="flex items-center gap-1">
@@ -1580,7 +1656,7 @@
             showToast("Phrase removed from phrasebook", "info");
         }
 
-        /* STREAMING_CHUNK:Configuring payment gateway options... */
+        /* STREAMING_CHUNK:Configuring payment gateway and receipt options... */
         function selectPaymentMethod(method) {
             selectedPaymentMethod = method;
             ['card', 'fpx', 'ewallet', 'qr'].forEach(m => {
@@ -1692,7 +1768,7 @@
                 content.innerHTML = `
                     <div class="text-center pb-3 border-b border-slate-200 dark:border-slate-700">
                         <h4 class="font-black text-base uppercase tracking-wider text-slate-900 dark:text-white">TRAVORA OFFICIAL RECEIPT</h4>
-                        <a href="https://www.travora.com" target="_blank" class="text-[11px] text-sky-600 hover:underline font-semibold block">www.travora.com</a>
+                        <a href="https://travoratr.netlify.app/" target="_blank" class="text-[11px] text-sky-600 hover:underline font-semibold block">www.travora.com</a>
                         <span class="text-slate-400 font-mono text-[11px]">${b.id}</span>
                     </div>
                     <div class="space-y-2 pt-2">
@@ -1716,7 +1792,7 @@
             }
         }
 
-        /* STREAMING_CHUNK:Executing authentication routines... */
+        /* STREAMING_CHUNK:Executing user login and registration forms... */
         function openAuthModal() {
             document.getElementById('authModal').classList.remove('hidden');
         }
