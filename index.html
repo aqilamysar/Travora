@@ -72,88 +72,93 @@
     <nav class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 gap-4">
-                
+            
                 <!-- Logo & Web Link -->
                 <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('dashboard')">
-                    <div class="w-11 h-11 flex items-center justify-center relative">
-                        <!-- High-Fidelity Travora Compass Emblem Vector -->
-                        <svg class="w-11 h-11 drop-shadow-sm hover:scale-105 transition-transform" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Gradient Definitions -->
+                    <div class="w-11 h-11 relative flex items-center justify-center">
+                        <!-- 1. Actual Attached Image with automatic SVG Vector fallback -->
+                        <img src="WhatsApp Image 2026-08-17 at 13.50.46.jpeg" alt="Travora Logo" class="w-11 h-11 object-contain hidden" onload="this.classList.remove('hidden'); document.getElementById('travoraVectorLogo').classList.add('hidden');" onerror="this.remove(); document.getElementById('travoraVectorLogo').classList.remove('hidden');">
+
+                        <!-- 2. Ultra-Precise Vector Recreation Matching Attached Emblem -->
+                        <svg id="travoraVectorLogo" class="w-11 h-11 drop-shadow-md hover:scale-105 transition-transform" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <defs>
-                                <!-- Top-Right Ring Arc (Orange / Coral Gradient) -->
-                                <linearGradient id="travoraTopArc" x1="120" y1="30" x2="270" y2="180" gradientUnits="userSpaceOnUse">
-                                    <stop offset="0%" stop-color="#EA580C"/>
-                                    <stop offset="45%" stop-color="#F97316"/>
-                                    <stop offset="85%" stop-color="#FB923C"/>
+                                <!-- Top-Right Orange Gradient -->
+                                <linearGradient id="seaOrangeGrad" x1="120" y1="40" x2="350" y2="260" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#E76A3C"/>
+                                    <stop offset="35%" stop-color="#EA580C"/>
+                                    <stop offset="70%" stop-color="#F97316"/>
+                                    <stop offset="90%" stop-color="#FB923C"/>
                                     <stop offset="100%" stop-color="#FDBA74"/>
                                 </linearGradient>
 
-                                <!-- Bottom-Left Ring Arc (Indigo / Deep Purple Gradient) -->
-                                <linearGradient id="travoraBottomArc" x1="40" y1="120" x2="190" y2="280" gradientUnits="userSpaceOnUse">
-                                    <stop offset="0%" stop-color="#2E1065"/>
-                                    <stop offset="35%" stop-color="#312E81"/>
-                                    <stop offset="70%" stop-color="#3730A3"/>
-                                    <stop offset="100%" stop-color="#4F46E5"/>
+                                <!-- Bottom-Left Deep Indigo Gradient -->
+                                <linearGradient id="seaIndigoGrad" x1="280" y1="360" x2="50" y2="140" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#1E1B4B"/>
+                                    <stop offset="30%" stop-color="#28235C"/>
+                                    <stop offset="70%" stop-color="#342E75"/>
+                                    <stop offset="100%" stop-color="#4338CA"/>
                                 </linearGradient>
 
-                                <!-- Top-Right Needle Facet (Warm Amber/Orange) -->
-                                <linearGradient id="needleFacetWarm" x1="150" y1="150" x2="245" y2="55" gradientUnits="userSpaceOnUse">
-                                    <stop offset="0%" stop-color="#F97316"/>
-                                    <stop offset="60%" stop-color="#EA580C"/>
+                                <!-- Needle: Top-Left Coral/Peach Facet -->
+                                <linearGradient id="needleCoralFacet" x1="150" y1="180" x2="300" y2="60" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#FFA07A"/>
+                                    <stop offset="30%" stop-color="#F97316"/>
+                                    <stop offset="75%" stop-color="#EA580C"/>
                                     <stop offset="100%" stop-color="#C2410C"/>
                                 </linearGradient>
 
-                                <!-- Top-Left Needle Facet (Deep Navy/Indigo) -->
-                                <linearGradient id="needleFacetDarkTop" x1="150" y1="150" x2="245" y2="55" gradientUnits="userSpaceOnUse">
-                                    <stop offset="0%" stop-color="#312E81"/>
-                                    <stop offset="50%" stop-color="#1E1B4B"/>
-                                    <stop offset="100%" stop-color="#0F172A"/>
+                                <!-- Needle: Top-Right Dark Facet -->
+                                <linearGradient id="needleDarkTopFacet" x1="200" y1="200" x2="310" y2="80" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#312B68"/>
+                                    <stop offset="50%" stop-color="#231E50"/>
+                                    <stop offset="100%" stop-color="#151235"/>
                                 </linearGradient>
 
-                                <!-- Bottom-Left Needle Facet (Deep Indigo Shadow) -->
-                                <linearGradient id="needleFacetDarkBot" x1="150" y1="150" x2="55" y2="245" gradientUnits="userSpaceOnUse">
-                                    <stop offset="0%" stop-color="#3730A3"/>
-                                    <stop offset="60%" stop-color="#1E1B4B"/>
-                                    <stop offset="100%" stop-color="#0F172A"/>
+                                <!-- Needle: Bottom-Left Dark Facet -->
+                                <linearGradient id="needleDarkBotFacet" x1="200" y1="200" x2="90" y2="320" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#29235A"/>
+                                    <stop offset="60%" stop-color="#1B1740"/>
+                                    <stop offset="100%" stop-color="#100D28"/>
                                 </linearGradient>
 
-                                <!-- Bottom-Right Needle Facet (Muted Slate/Purple) -->
-                                <linearGradient id="needleFacetMidBot" x1="150" y1="150" x2="55" y2="245" gradientUnits="userSpaceOnUse">
-                                    <stop offset="0%" stop-color="#4338CA"/>
-                                    <stop offset="50%" stop-color="#312E81"/>
-                                    <stop offset="100%" stop-color="#1E1B4B"/>
+                                <!-- Needle: Bottom-Right Deep Navy Facet -->
+                                <linearGradient id="needleMidBotFacet" x1="200" y1="200" x2="100" y2="330" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#3D357F"/>
+                                    <stop offset="50%" stop-color="#2E2864"/>
+                                    <stop offset="100%" stop-color="#1A163D"/>
                                 </linearGradient>
                             </defs>
 
-                            <!-- Outer Swirling Orbit Arcs -->
-                            <!-- Top Right Swirling Arc -->
-                            <path d="M 125 45 C 190 35 255 85 260 160 C 263 205 240 240 215 255 C 228 235 238 195 230 160 C 220 110 175 68 125 45 Z" fill="url(#travoraTopArc)"/>
-                            <!-- Inner Thin Accent Arc Top -->
-                            <path d="M 140 38 C 195 36 248 76 254 135 C 248 88 202 50 140 38 Z" fill="#FB923C" opacity="0.85"/>
+                            <!-- 1. TOP-RIGHT ORANGE SWOOSH RING -->
+                            <!-- Main Orange Outer Crescent -->
+                            <path d="M 160 52 C 248 48 322 108 335 196 C 342 240 326 280 298 308 C 304 286 304 252 294 218 C 278 160 228 106 160 84 C 132 75 106 74 86 78 C 108 62 133 53 160 52 Z" fill="url(#seaOrangeGrad)"/>
+                            <!-- Inner Orange Swoosh Accent -->
+                            <path d="M 185 88 C 242 106 284 152 295 210 C 298 226 298 244 294 260 C 286 230 268 190 238 162 C 206 132 168 116 132 110 C 148 100 166 93 185 88 Z" fill="url(#seaOrangeGrad)" opacity="0.9"/>
 
-                            <!-- Bottom Left Swirling Arc -->
-                            <path d="M 175 255 C 110 265 45 215 40 140 C 37 95 60 60 85 45 C 72 65 62 105 70 140 C 80 190 125 232 175 255 Z" fill="url(#travoraBottomArc)"/>
-                            <!-- Inner Thin Accent Arc Bottom -->
-                            <path d="M 160 262 C 105 264 52 224 46 165 C 52 212 98 250 160 262 Z" fill="#6366F1" opacity="0.85"/>
+                            <!-- 2. BOTTOM-LEFT INDIGO SWOOSH RING -->
+                            <!-- Main Indigo Outer Crescent -->
+                            <path d="M 240 348 C 152 352 78 292 65 204 C 58 160 74 120 102 92 C 96 114 96 148 106 182 C 122 240 172 294 240 316 C 268 325 294 326 314 322 C 292 338 267 347 240 348 Z" fill="url(#seaIndigoGrad)"/>
+                            <!-- Inner Indigo Swoosh Accent -->
+                            <path d="M 215 312 C 158 294 116 248 105 190 C 102 174 102 156 106 140 C 114 170 132 210 162 238 C 194 268 232 284 268 290 C 252 300 234 307 215 312 Z" fill="url(#seaIndigoGrad)" opacity="0.9"/>
 
-                            <!-- Main Compass Needle (Angled at 45 Degrees) -->
-                            <!-- 1. Top Right Upper Warm Half -->
-                            <path d="M 150 150 L 195 105 L 255 45 L 150 150 Z" fill="url(#needleFacetWarm)"/>
-                            <!-- 2. Top Right Lower Dark Half -->
-                            <path d="M 150 150 L 105 195 L 55 245 L 150 150 Z" fill="url(#needleFacetDarkBot)"/>
-                            <!-- 3. Top Left Dark Half -->
-                            <path d="M 150 150 L 105 195 L 255 45 L 150 150 Z" fill="url(#needleFacetDarkTop)"/>
-                            <!-- 4. Bottom Right Mid Dark Half -->
-                            <path d="M 150 150 L 195 105 L 55 245 L 150 150 Z" fill="url(#needleFacetMidBot)"/>
+                            <!-- 3. CENTRAL 3D FACETED COMPASS NEEDLE -->
+                            <!-- Top-Left Upper Coral Facet -->
+                            <polygon points="200,200 160,172 322,62" fill="url(#needleCoralFacet)"/>
 
-                            <!-- Needle Facet Polygon Lines for Depth -->
-                            <polygon points="150,150 105,195 55,245" fill="#1E1B4B" opacity="0.9"/>
-                            <polygon points="150,150 195,105 255,45" fill="url(#needleFacetWarm)"/>
-                            <polygon points="150,150 105,195 255,45" fill="#0F172A" opacity="0.95"/>
-                            <polygon points="150,150 195,105 55,245" fill="#312E81" opacity="0.9"/>
+                            <!-- Top-Right Upper Dark Navy Facet -->
+                            <polygon points="200,200 240,228 322,62" fill="url(#needleDarkTopFacet)"/>
 
-                            <!-- Center White Pivot Dot -->
-                            <circle cx="150" cy="150" r="14" fill="#FFFFFF" filter="drop-shadow(0px 1px 2px rgba(0,0,0,0.3))"/>
+                            <!-- Bottom-Left Lower Deep Dark Facet -->
+                            <polygon points="200,200 160,172 78,338" fill="url(#needleDarkBotFacet)"/>
+
+                            <!-- Bottom-Right Lower Indigo Facet -->
+                            <polygon points="200,200 240,228 78,338" fill="url(#needleMidBotFacet)"/>
+
+                            <!-- Needle Spine Contrast Highlights -->
+                            <line x1="78" y1="338" x2="322" y2="62" stroke="#120F2E" stroke-width="1.5"/>
+
+                            <!-- 4. CENTER CIRCLE PIVOT -->
+                            <circle cx="200" cy="200" r="16" fill="#FFFFFF"/>
                         </svg>
                     </div>
                     <div>
