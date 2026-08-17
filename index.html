@@ -116,7 +116,7 @@
                 <div class="hidden md:flex flex-1 max-w-md mx-4">
                     <div class="relative w-full">
                         <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                        <input type="text" id="globalNavSearch" placeholder="Search flights, hotels, or destinations..." class="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-0 rounded-full text-xs text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:ring-2 focus:ring-sky-500 outline-none transition" onkeyup="if(event.key==='Enter') triggerGlobalSearch(this.value)">
+                        <input type="text" id="globalNavSearch" placeholder="Search Southeast Asian flights, hotels, or destinations..." class="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-0 rounded-full text-xs text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:ring-2 focus:ring-sky-500 outline-none transition" onkeyup="if(event.key==='Enter') triggerGlobalSearch(this.value)">
                     </div>
                 </div>
 
@@ -135,8 +135,8 @@
                     </select>
 
                     <!-- Language Selector Flag Dropdown -->
-                    <div class="relative" id="navLangDropdownWrapper">
-                        <button onclick="toggleLangDropdown()" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                    <div class="relative">
+                        <button onclick="toggleLangDropdown(event)" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
                             <span id="navFlagIcon">🇲🇾</span>
                             <span id="navLangText">MY</span>
                             <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
@@ -180,7 +180,7 @@
                 <i class="fa-solid fa-hotel"></i> SEA Hotels
             </button>
             <button id="tabBtn-translations" onclick="switchTab('translations')" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
-                <i class="fa-solid fa-language"></i> Language Guide
+                <i class="fa-solid fa-language"></i> Language & Romaji Guide
             </button>
             <button id="tabBtn-payments" onclick="switchTab('payments')" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
                 <i class="fa-solid fa-receipt"></i> Bookings & Payments
@@ -316,54 +316,37 @@
                         </label>
                     </div>
 
-                    <!-- 2. Origins & Destinations with Interactive Dropdown List Buttons -->
+                    <!-- 2. Origins & Destinations with List Down Dropdown -->
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                        <!-- Origin Input with List Down Button -->
-                        <div>
+                        <!-- Origin Field -->
+                        <div class="relative">
                             <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Where From? (Origin Airport)</label>
-                            <div class="relative" id="flightFromDropdownWrapper">
-                                <i class="fa-solid fa-plane-departure absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                                <input type="text" id="flightFrom" value="Kuala Lumpur, Malaysia (KUL)" required class="w-full pl-9 pr-8 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium focus:ring-2 focus:ring-sky-500 outline-none cursor-pointer" onclick="toggleCustomDropdown('flightFromList')" oninput="filterCustomDropdown('flightFrom', 'flightFromList')" placeholder="Select or type airport...">
-                                <button type="button" onclick="toggleCustomDropdown('flightFromList')" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1" title="Open Airport List">
-                                    <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                            <div class="relative flex items-center">
+                                <i class="fa-solid fa-plane-departure absolute left-3 text-slate-400 text-xs pointer-events-none"></i>
+                                <input type="text" id="flightFrom" value="Kuala Lumpur, Malaysia (KUL)" required onclick="toggleCustomDropdown('flightFromDropdown', event)" oninput="filterCustomDropdown('flightFrom', 'flightFromDropdown')" class="w-full pl-9 pr-8 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium focus:ring-2 focus:ring-sky-500 outline-none cursor-pointer">
+                                <button type="button" onclick="toggleCustomDropdown('flightFromDropdown', event)" class="absolute right-2.5 text-slate-400 hover:text-sky-600 p-1">
+                                    <i class="fa-solid fa-chevron-down text-xs"></i>
                                 </button>
-                                
-                                <!-- Custom Interactive Dropdown Menu -->
-                                <div id="flightFromList" class="hidden absolute left-0 right-0 top-full mt-1.5 max-h-56 overflow-y-auto bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 py-1.5 z-50 divide-y divide-slate-100 dark:divide-slate-700/50">
-                                    <button type="button" onclick="selectDropdownItem('flightFrom', 'flightFromList', 'Kuala Lumpur, Malaysia (KUL)')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇲🇾</span> Kuala Lumpur, Malaysia (KUL)</button>
-                                    <button type="button" onclick="selectDropdownItem('flightFrom', 'flightFromList', 'Penang, Malaysia (PEN)')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇲🇾</span> Penang, Malaysia (PEN)</button>
-                                    <button type="button" onclick="selectDropdownItem('flightFrom', 'flightFromList', 'Kota Kinabalu, Sabah, Malaysia (BKI)')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇲🇾</span> Kota Kinabalu, Sabah (BKI)</button>
-                                    <button type="button" onclick="selectDropdownItem('flightFrom', 'flightFromList', 'Singapore Changi (SIN)')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇸🇬</span> Singapore Changi (SIN)</button>
-                                    <button type="button" onclick="selectDropdownItem('flightFrom', 'flightFromList', 'Bangkok Suvarnabhumi, Thailand (BKK)')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇹🇭</span> Bangkok Suvarnabhumi, Thailand (BKK)</button>
-                                    <button type="button" onclick="selectDropdownItem('flightFrom', 'flightFromList', 'Bali Ngurah Rai, Indonesia (DPS)')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇮🇩</span> Bali Ngurah Rai, Indonesia (DPS)</button>
-                                    <button type="button" onclick="selectDropdownItem('flightFrom', 'flightFromList', 'Jakarta Soekarno-Hatta, Indonesia (CGK)')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇮🇩</span> Jakarta Soekarno-Hatta, Indonesia (CGK)</button>
-                                    <button type="button" onclick="selectDropdownItem('flightFrom', 'flightFromList', 'Hanoi Noi Bai, Vietnam (HAN)')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇻🇳</span> Hanoi Noi Bai, Vietnam (HAN)</button>
-                                    <button type="button" onclick="selectDropdownItem('flightFrom', 'flightFromList', 'Manila Ninoy Aquino, Philippines (MNL)')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇵🇭</span> Manila Ninoy Aquino, Philippines (MNL)</button>
-                                </div>
+                            </div>
+                            <!-- Custom Scrollable Airport List -->
+                            <div id="flightFromDropdown" class="hidden absolute left-0 right-0 top-full mt-1.5 max-h-60 overflow-y-auto bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-2xl z-50 py-2 divide-y divide-slate-100 dark:divide-slate-700/50">
+                                <!-- Airport Groups injected via JS -->
                             </div>
                         </div>
 
-                        <!-- Destination Input with List Down Button -->
-                        <div>
+                        <!-- Destination Field -->
+                        <div class="relative">
                             <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Where To? (Destination Airport)</label>
-                            <div class="relative" id="flightToDropdownWrapper">
-                                <i class="fa-solid fa-location-dot absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                                <input type="text" id="flightTo" value="Ngurah Rai, Bali, Indonesia (DPS)" required class="w-full pl-9 pr-8 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium focus:ring-2 focus:ring-sky-500 outline-none cursor-pointer" onclick="toggleCustomDropdown('flightToList')" oninput="filterCustomDropdown('flightTo', 'flightToList')" placeholder="Select or type airport...">
-                                <button type="button" onclick="toggleCustomDropdown('flightToList')" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1" title="Open Airport List">
-                                    <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                            <div class="relative flex items-center">
+                                <i class="fa-solid fa-location-dot absolute left-3 text-slate-400 text-xs pointer-events-none"></i>
+                                <input type="text" id="flightTo" value="Bali Ngurah Rai, Indonesia (DPS)" required onclick="toggleCustomDropdown('flightToDropdown', event)" oninput="filterCustomDropdown('flightTo', 'flightToDropdown')" class="w-full pl-9 pr-8 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium focus:ring-2 focus:ring-sky-500 outline-none cursor-pointer">
+                                <button type="button" onclick="toggleCustomDropdown('flightToDropdown', event)" class="absolute right-2.5 text-slate-400 hover:text-sky-600 p-1">
+                                    <i class="fa-solid fa-chevron-down text-xs"></i>
                                 </button>
-
-                                <!-- Custom Interactive Dropdown Menu -->
-                                <div id="flightToList" class="hidden absolute left-0 right-0 top-full mt-1.5 max-h-56 overflow-y-auto bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 py-1.5 z-50 divide-y divide-slate-100 dark:divide-slate-700/50">
-                                    <button type="button" onclick="selectDropdownItem('flightTo', 'flightToList', 'Bali Ngurah Rai, Indonesia (DPS)')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇮🇩</span> Bali Ngurah Rai, Indonesia (DPS)</button>
-                                    <button type="button" onclick="selectDropdownItem('flightTo', 'flightToList', 'Bangkok Suvarnabhumi, Thailand (BKK)')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇹🇭</span> Bangkok Suvarnabhumi, Thailand (BKK)</button>
-                                    <button type="button" onclick="selectDropdownItem('flightTo', 'flightToList', 'Phuket, Thailand (HKT)')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇹🇭</span> Phuket, Thailand (HKT)</button>
-                                    <button type="button" onclick="selectDropdownItem('flightTo', 'flightToList', 'Singapore Changi (SIN)')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇸🇬</span> Singapore Changi (SIN)</button>
-                                    <button type="button" onclick="selectDropdownItem('flightTo', 'flightToList', 'Penang, Malaysia (PEN)')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇲🇾</span> Penang, Malaysia (PEN)</button>
-                                    <button type="button" onclick="selectDropdownItem('flightTo', 'flightToList', 'Ho Chi Minh City, Vietnam (SGN)')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇻🇳</span> Ho Chi Minh City, Vietnam (SGN)</button>
-                                    <button type="button" onclick="selectDropdownItem('flightTo', 'flightToList', 'Cebu Mactan, Philippines (CEB)')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇵🇭</span> Cebu Mactan, Philippines (CEB)</button>
-                                    <button type="button" onclick="selectDropdownItem('flightTo', 'flightToList', 'Siem Reap, Cambodia (REP)')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇰🇭</span> Siem Reap, Cambodia (REP)</button>
-                                </div>
+                            </div>
+                            <!-- Custom Scrollable Destination Airport List -->
+                            <div id="flightToDropdown" class="hidden absolute left-0 right-0 top-full mt-1.5 max-h-60 overflow-y-auto bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-2xl z-50 py-2 divide-y divide-slate-100 dark:divide-slate-700/50">
+                                <!-- Airport Groups injected via JS -->
                             </div>
                         </div>
 
@@ -411,14 +394,17 @@
                             <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Preferred Airline</label>
                             <select id="flightAirline" class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium focus:ring-2 focus:ring-sky-500 outline-none">
                                 <option value="all" selected>All SEA Airlines</option>
+                                <option value="AirAsia">AirAsia 🇲🇾</option>
                                 <option value="Singapore Airlines">Singapore Airlines 🇸🇬</option>
                                 <option value="Malaysia Airlines">Malaysia Airlines 🇲🇾</option>
-                                <option value="AirAsia">AirAsia 🇲🇾</option>
                                 <option value="Thai Airways">Thai Airways 🇹🇭</option>
                                 <option value="Vietnam Airlines">Vietnam Airlines 🇻🇳</option>
-                                <option value="Garuda Indonesia">Garuda Indonesia 🇮🇩</option>
                                 <option value="Cebu Pacific">Cebu Pacific 🇵🇭</option>
-                                <option value="Royal Brunei">Royal Brunei Airlines 🇧🇳</option>
+                                <option value="Garuda Indonesia">Garuda Indonesia 🇮🇩</option>
+                                <option value="Royal Brunei">Royal Brunei 🇧🇳</option>
+                                <option value="Philippine Airlines">Philippine Airlines 🇵🇭</option>
+                                <option value="Batik Air">Batik Air 🇲🇾/🇮🇩</option>
+                                <option value="Bangkok Airways">Bangkok Airways 🇹🇭</option>
                             </select>
                         </div>
                     </div>
@@ -432,7 +418,7 @@
             <!-- Flight Search Results -->
             <div class="space-y-4">
                 <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center justify-between">
-                    <span id="flightSearchTitle">Available Flights (KUL ➔ DPS)</span>
+                    <span id="flightSearchTitle">Available SEA Flights (KUL ➔ DPS)</span>
                     <span id="flightResultsCount" class="text-xs text-slate-500">Showing 3 options</span>
                 </h3>
 
@@ -448,30 +434,22 @@
                 <h2 class="text-xl font-extrabold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
                     <i class="fa-solid fa-hotel text-indigo-500"></i> Southeast Asian Hotels & Resorts Engine
                 </h2>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">Explore accommodations across popular states, provinces, and island regions in Southeast Asia.</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">Explore accommodations across popular states, provinces, and island destinations in Southeast Asia.</p>
 
                 <form onsubmit="handleHotelSearch(event)" class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <!-- Location Field with Custom Dropdown List Button -->
-                        <div class="md:col-span-1">
+                        <div class="md:col-span-1 relative">
                             <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Destination State / Region</label>
-                            <div class="relative" id="hotelLocDropdownWrapper">
-                                <i class="fa-solid fa-map-pin absolute left-3 top-3.5 text-slate-400 text-xs z-10"></i>
-                                <input type="text" id="hotelLocation" value="Bali, Indonesia" required class="w-full pl-9 pr-8 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium focus:ring-2 focus:ring-indigo-500 outline-none cursor-pointer" onclick="toggleCustomDropdown('hotelLocList')" oninput="filterCustomDropdown('hotelLocation', 'hotelLocList')">
-                                <button type="button" onclick="toggleCustomDropdown('hotelLocList')" class="absolute right-2.5 top-3.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1 z-10" title="Open Location List">
-                                    <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                            <div class="relative flex items-center">
+                                <i class="fa-solid fa-map-pin absolute left-3 text-slate-400 text-xs pointer-events-none"></i>
+                                <input type="text" id="hotelLocation" value="Bali, Indonesia" required onclick="toggleCustomDropdown('hotelLocDropdown', event)" oninput="filterCustomDropdown('hotelLocation', 'hotelLocDropdown')" class="w-full pl-9 pr-8 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium focus:ring-2 focus:ring-indigo-500 outline-none cursor-pointer">
+                                <button type="button" onclick="toggleCustomDropdown('hotelLocDropdown', event)" class="absolute right-2.5 text-slate-400 hover:text-indigo-600 p-1">
+                                    <i class="fa-solid fa-chevron-down text-xs"></i>
                                 </button>
-
-                                <!-- Custom Interactive Dropdown Menu -->
-                                <div id="hotelLocList" class="hidden absolute left-0 right-0 top-full mt-1.5 max-h-56 overflow-y-auto bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 py-1.5 z-50 divide-y divide-slate-100 dark:divide-slate-700/50">
-                                    <button type="button" onclick="selectDropdownItem('hotelLocation', 'hotelLocList', 'Bali, Indonesia')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇮🇩</span> Bali, Indonesia</button>
-                                    <button type="button" onclick="selectDropdownItem('hotelLocation', 'hotelLocList', 'Phuket, Thailand')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇹🇭</span> Phuket, Thailand</button>
-                                    <button type="button" onclick="selectDropdownItem('hotelLocation', 'hotelLocList', 'Penang, Malaysia')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇲🇾</span> Penang, Malaysia</button>
-                                    <button type="button" onclick="selectDropdownItem('hotelLocation', 'hotelLocList', 'Singapore')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇸🇬</span> Singapore</button>
-                                    <button type="button" onclick="selectDropdownItem('hotelLocation', 'hotelLocList', 'Hanoi, Vietnam')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇻🇳</span> Hanoi, Vietnam</button>
-                                    <button type="button" onclick="selectDropdownItem('hotelLocation', 'hotelLocList', 'Siem Reap, Cambodia')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇰🇭</span> Siem Reap, Cambodia</button>
-                                    <button type="button" onclick="selectDropdownItem('hotelLocation', 'hotelLocList', 'Cebu, Philippines')" class="w-full text-left px-3.5 py-2 text-xs hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2 font-medium"><span>🇵🇭</span> Cebu, Philippines</button>
-                                </div>
+                            </div>
+                            <!-- Custom Scrollable Hotel Region List -->
+                            <div id="hotelLocDropdown" class="hidden absolute left-0 right-0 top-full mt-1.5 max-h-64 overflow-y-auto bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-2xl z-50 py-2 divide-y divide-slate-100 dark:divide-slate-700/50">
+                                <!-- Injected via JS -->
                             </div>
 
                             <!-- Quick Location Selector Pills -->
@@ -480,8 +458,9 @@
                                 <button type="button" onclick="quickSelectHotelLoc('Bali, Indonesia')" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">Bali 🇮🇩</button>
                                 <button type="button" onclick="quickSelectHotelLoc('Phuket, Thailand')" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">Phuket 🇹🇭</button>
                                 <button type="button" onclick="quickSelectHotelLoc('Penang, Malaysia')" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">Penang 🇲🇾</button>
-                                <button type="button" onclick="quickSelectHotelLoc('Singapore')" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">Singapore 🇸🇬</button>
+                                <button type="button" onclick="quickSelectHotelLoc('Singapore City, Singapore')" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">Singapore 🇸🇬</button>
                                 <button type="button" onclick="quickSelectHotelLoc('Hanoi, Vietnam')" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">Hanoi 🇻🇳</button>
+                                <button type="button" onclick="quickSelectHotelLoc('Siem Reap, Cambodia')" class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white rounded-lg text-[10px] font-bold text-slate-600 dark:text-slate-300 transition">Siem Reap 🇰🇭</button>
                             </div>
                         </div>
 
@@ -968,7 +947,7 @@
             </button>
 
             <div id="receiptContent" class="space-y-4 text-xs">
-                <!-- Receipt content populated via JS -->
+                <!-- Populated via JS -->
             </div>
 
             <div class="mt-6 flex gap-3">
@@ -987,6 +966,149 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
+        // SOUTHEAST ASIAN AIRPORTS DATABASE (ALL 11 COUNTRIES)
+        const seaAirportsDatabase = [
+            {
+                country: "Brunei 🇧🇳",
+                airports: [
+                    { name: "Bandar Seri Begawan - Brunei Intl Airport (BWN)", code: "BWN" }
+                ]
+            },
+            {
+                country: "Cambodia 🇰🇭",
+                airports: [
+                    { name: "Phnom Penh Intl Airport (PNH)", code: "PNH" },
+                    { name: "Siem Reap Angkor Intl Airport (REP)", code: "REP" }
+                ]
+            },
+            {
+                country: "East Timor / Timor-Leste 🇹🇱",
+                airports: [
+                    { name: "Dili - Presidente Nicolau Lobato Intl (DIL)", code: "DIL" }
+                ]
+            },
+            {
+                country: "Indonesia 🇮🇩",
+                airports: [
+                    { name: "Bali - Ngurah Rai Intl Airport (DPS)", code: "DPS" },
+                    { name: "Jakarta - Soekarno-Hatta Intl (CGK)", code: "CGK" },
+                    { name: "Yogyakarta Intl Airport (YIA)", code: "YIA" },
+                    { name: "Surabaya - Juanda Intl Airport (SUB)", code: "SUB" },
+                    { name: "Medan - Kualanamu Intl Airport (KNO)", code: "KNO" }
+                ]
+            },
+            {
+                country: "Laos 🇱🇦",
+                airports: [
+                    { name: "Luang Prabang Intl Airport (LPQ)", code: "LPQ" },
+                    { name: "Vientiane - Wattay Intl Airport (VTE)", code: "VTE" }
+                ]
+            },
+            {
+                country: "Malaysia 🇲🇾",
+                airports: [
+                    { name: "Kuala Lumpur Intl Airport (KUL)", code: "KUL" },
+                    { name: "Penang Intl Airport (PEN)", code: "PEN" },
+                    { name: "Sabah - Kota Kinabalu Intl (BKI)", code: "BKI" },
+                    { name: "Sarawak - Kuching Intl Airport (KCH)", code: "KCH" },
+                    { name: "Langkawi Intl Airport (LGK)", code: "LGK" },
+                    { name: "Johor Bahru - Senai Intl Airport (JHB)", code: "JHB" }
+                ]
+            },
+            {
+                country: "Myanmar 🇲🇲",
+                airports: [
+                    { name: "Yangon Intl Airport (RGN)", code: "RGN" },
+                    { name: "Mandalay Intl Airport (MDL)", code: "MDL" }
+                ]
+            },
+            {
+                country: "Philippines 🇵🇭",
+                airports: [
+                    { name: "Manila - Ninoy Aquino Intl (MNL)", code: "MNL" },
+                    { name: "Cebu - Mactan-Cebu Intl (CEB)", code: "CEB" },
+                    { name: "Boracay - Godofredo P. Ramos / Caticlan (MPH)", code: "MPH" },
+                    { name: "Palawan - Puerto Princesa Intl (PPS)", code: "PPS" },
+                    { name: "Davao - Francisco Bangoy Intl (DVO)", code: "DVO" }
+                ]
+            },
+            {
+                country: "Singapore 🇸🇬",
+                airports: [
+                    { name: "Singapore Changi Airport (SIN)", code: "SIN" }
+                ]
+            },
+            {
+                country: "Thailand 🇹🇭",
+                airports: [
+                    { name: "Bangkok - Suvarnabhumi Airport (BKK)", code: "BKK" },
+                    { name: "Phuket Intl Airport (HKT)", code: "HKT" },
+                    { name: "Chiang Mai Intl Airport (CNX)", code: "CNX" },
+                    { name: "Koh Samui Airport (USM)", code: "USM" },
+                    { name: "Krabi Intl Airport (KBV)", code: "KBV" }
+                ]
+            },
+            {
+                country: "Vietnam 🇻🇳",
+                airports: [
+                    { name: "Hanoi - Noi Bai Intl Airport (HAN)", code: "HAN" },
+                    { name: "Ho Chi Minh City - Tan Son Nhat (SGN)", code: "SGN" },
+                    { name: "Da Nang Intl Airport (DAD)", code: "DAD" },
+                    { name: "Phu Quoc Intl Airport (PQC)", code: "PQC" },
+                    { name: "Nha Trang - Cam Ranh Intl (CXR)", code: "CXR" }
+                ]
+            }
+        ];
+
+        // SOUTHEAST ASIAN POPULAR STATES & HOTEL DESTINATIONS (ALL 11 COUNTRIES)
+        const seaHotelDestinationsDatabase = [
+            {
+                country: "Brunei 🇧🇳",
+                destinations: ["Bandar Seri Begawan, Brunei", "Jerudong, Brunei", "Tutong, Brunei", "Temburong, Brunei"]
+            },
+            {
+                country: "Cambodia 🇰🇭",
+                destinations: ["Siem Reap, Cambodia", "Phnom Penh, Cambodia", "Sihanoukville, Cambodia", "Koh Rong, Cambodia", "Battambang, Cambodia"]
+            },
+            {
+                country: "East Timor / Timor-Leste 🇹🇱",
+                destinations: ["Dili, Timor-Leste", "Atauro Island, Timor-Leste", "Baucau, Timor-Leste"]
+            },
+            {
+                country: "Indonesia 🇮🇩",
+                destinations: ["Bali, Indonesia", "Jakarta, Indonesia", "Yogyakarta, Indonesia", "Surabaya, Indonesia", "Medan, Indonesia", "Lombok, Indonesia", "Labuan Bajo / Komodo, Indonesia", "Bandung, Indonesia"]
+            },
+            {
+                country: "Laos 🇱🇦",
+                destinations: ["Luang Prabang, Laos", "Vientiane, Laos", "Vang Vieng, Laos", "Pakse / Champasak, Laos"]
+            },
+            {
+                country: "Malaysia 🇲🇾",
+                destinations: ["Kuala Lumpur, Malaysia", "Penang, Malaysia", "Sabah (Kota Kinabalu), Malaysia", "Sarawak (Kuching), Malaysia", "Langkawi, Kedah, Malaysia", "Johor Bahru, Malaysia", "Melaka, Malaysia", "Pahang (Cameron / Genting), Malaysia"]
+            },
+            {
+                country: "Myanmar 🇲🇲",
+                destinations: ["Yangon, Myanmar", "Bagan / Mandalay, Myanmar", "Inle Lake / Shan State, Myanmar", "Ngapali Beach, Myanmar"]
+            },
+            {
+                country: "Philippines 🇵🇭",
+                destinations: ["Manila, Philippines", "Cebu, Philippines", "Boracay Island, Philippines", "Palawan (El Nido / Coron), Philippines", "Davao, Philippines", "Siargao Island, Philippines"]
+            },
+            {
+                country: "Singapore 🇸🇬",
+                destinations: ["Singapore City (Marina Bay / Orchard), Singapore", "Sentosa Island, Singapore", "Changi Coast, Singapore"]
+            },
+            {
+                country: "Thailand 🇹🇭",
+                destinations: ["Bangkok, Thailand", "Phuket, Thailand", "Chiang Mai, Thailand", "Koh Samui, Thailand", "Krabi, Thailand", "Pattaya / Chonburi, Thailand", "Hua Hin, Thailand"]
+            },
+            {
+                country: "Vietnam 🇻🇳",
+                destinations: ["Hanoi, Vietnam", "Ho Chi Minh City, Vietnam", "Da Nang / Hoi An, Vietnam", "Phu Quoc Island, Vietnam", "Nha Trang, Vietnam", "Ha Long Bay / Quang Ninh, Vietnam", "Sa Pa, Vietnam"]
+            }
+        ];
+
+        // GLOBAL APP STATE
         let activeTab = 'dashboard';
         let currentCurrency = 'MYR';
         let currencySymbol = 'RM';
@@ -1000,7 +1122,10 @@
         window.bookingHistory = [];
         window.savedTranslations = [];
 
+        // ON PAGE LOAD
         window.onload = function() {
+            populateAirportDropdowns();
+            populateHotelDropdown();
             initCountdown();
             renderDashboardBookings();
             renderFlights();
@@ -1011,73 +1136,126 @@
             updateTripBannerUI();
         };
 
-        // CUSTOM INTERACTIVE DROPDOWN HANDLERS
-        function toggleCustomDropdown(listId) {
-            const list = document.getElementById(listId);
-            if (!list) return;
-            const isHidden = list.classList.contains('hidden');
-            ['flightFromList', 'flightToList', 'hotelLocList', 'navLangDropdown'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el && id !== listId) el.classList.add('hidden');
-            });
-            if (isHidden) {
-                list.classList.remove('hidden');
-            } else {
-                list.classList.add('hidden');
-            }
-        }
+        // POPULATE AIRPORT CUSTOM DROPDOWNS
+        function populateAirportDropdowns() {
+            const fromContainer = document.getElementById('flightFromDropdown');
+            const toContainer = document.getElementById('flightToDropdown');
+            if (!fromContainer || !toContainer) return;
 
-        function selectDropdownItem(inputId, listId, value) {
-            const input = document.getElementById(inputId);
-            if (input) input.value = value;
-            const list = document.getElementById(listId);
-            if (list) list.classList.add('hidden');
-            if (inputId === 'flightFrom' || inputId === 'flightTo') {
-                handleFlightSearch();
-            } else if (inputId === 'hotelLocation') {
-                handleHotelSearch();
-            }
-        }
-
-        function filterCustomDropdown(inputId, listId) {
-            const input = document.getElementById(inputId);
-            const list = document.getElementById(listId);
-            if (!input || !list) return;
-            
-            list.classList.remove('hidden');
-            const filter = input.value.toLowerCase();
-            const buttons = list.querySelectorAll('button');
-            buttons.forEach(btn => {
-                const text = btn.innerText.toLowerCase();
-                if (text.includes(filter)) {
-                    btn.style.display = 'flex';
-                } else {
-                    btn.style.display = 'none';
-                }
-            });
-        }
-
-        // Global click-outside listener for custom dropdowns
-        document.addEventListener('click', function(e) {
-            const dropdownWrappers = ['flightFromDropdownWrapper', 'flightToDropdownWrapper', 'hotelLocDropdownWrapper', 'navLangDropdownWrapper'];
-            const dropdownLists = ['flightFromList', 'flightToList', 'hotelLocList', 'navLangDropdown'];
-            
-            let clickedInside = false;
-            dropdownWrappers.forEach(wId => {
-                const wrapper = document.getElementById(wId);
-                if (wrapper && wrapper.contains(e.target)) {
-                    clickedInside = true;
-                }
-            });
-            
-            if (!clickedInside) {
-                dropdownLists.forEach(lId => {
-                    const el = document.getElementById(lId);
-                    if (el) el.classList.add('hidden');
+            let html = '';
+            seaAirportsDatabase.forEach(group => {
+                html += `
+                    <div class="px-3 py-1.5 bg-slate-100 dark:bg-slate-700/60 text-[10px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-300">
+                        ${group.country}
+                    </div>
+                `;
+                group.airports.forEach(ap => {
+                    html += `
+                        <button type="button" onclick="selectAirportOption(this, '${ap.name.replace(/'/g, "\\'")}')" class="airport-option-btn w-full text-left px-3 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-sky-950/50 hover:text-sky-600 transition flex items-center justify-between">
+                            <span><i class="fa-solid fa-plane-departure text-[10px] mr-1.5 text-sky-500"></i> ${ap.name}</span>
+                            <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300">${ap.code}</span>
+                        </button>
+                    `;
                 });
-            }
+            });
+
+            fromContainer.innerHTML = html;
+            toContainer.innerHTML = html;
+        }
+
+        // POPULATE HOTEL CUSTOM DROPDOWN
+        function populateHotelDropdown() {
+            const container = document.getElementById('hotelLocDropdown');
+            if (!container) return;
+
+            let html = '';
+            seaHotelDestinationsDatabase.forEach(group => {
+                html += `
+                    <div class="px-3 py-1.5 bg-slate-100 dark:bg-slate-700/60 text-[10px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-300">
+                        ${group.country}
+                    </div>
+                `;
+                group.destinations.forEach(dest => {
+                    html += `
+                        <button type="button" onclick="selectHotelLocationOption('${dest.replace(/'/g, "\\'")}')" class="hotel-option-btn w-full text-left px-3 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 hover:text-indigo-600 transition flex items-center gap-2">
+                            <i class="fa-solid fa-hotel text-[10px] text-indigo-500"></i> ${dest}
+                        </button>
+                    `;
+                });
+            });
+
+            container.innerHTML = html;
+        }
+
+        // DROPDOWN INTERACTIVE CONTROLS
+        function toggleCustomDropdown(dropdownId, e) {
+            if (e) e.stopPropagation();
+            const target = document.getElementById(dropdownId);
+            if (!target) return;
+            const isHidden = target.classList.contains('hidden');
+            closeAllCustomDropdowns();
+            if (isHidden) target.classList.remove('hidden');
+        }
+
+        function closeAllCustomDropdowns() {
+            ['flightFromDropdown', 'flightToDropdown', 'hotelLocDropdown', 'navLangDropdown'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.add('hidden');
+            });
+        }
+
+        document.addEventListener('click', () => {
+            closeAllCustomDropdowns();
         });
 
+        function filterCustomDropdown(inputId, dropdownId) {
+            const query = document.getElementById(inputId).value.toLowerCase();
+            const dropdown = document.getElementById(dropdownId);
+            if (!dropdown) return;
+            dropdown.classList.remove('hidden');
+
+            const buttons = dropdown.querySelectorAll('button');
+            buttons.forEach(btn => {
+                const text = btn.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    btn.classList.remove('hidden');
+                } else {
+                    btn.classList.add('hidden');
+                }
+            });
+        }
+
+        function selectAirportOption(btnEl, fullValue) {
+            const dropdown = btnEl.closest('#flightFromDropdown, #flightToDropdown');
+            if (dropdown && dropdown.id === 'flightFromDropdown') {
+                document.getElementById('flightFrom').value = fullValue;
+            } else if (dropdown && dropdown.id === 'flightToDropdown') {
+                document.getElementById('flightTo').value = fullValue;
+            }
+            closeAllCustomDropdowns();
+            handleFlightSearch();
+        }
+
+        function selectHotelLocationOption(locationValue) {
+            document.getElementById('hotelLocation').value = locationValue;
+            closeAllCustomDropdowns();
+            handleHotelSearch();
+        }
+
+        function toggleLangDropdown(e) {
+            if (e) e.stopPropagation();
+            const dd = document.getElementById('navLangDropdown');
+            if (dd) dd.classList.toggle('hidden');
+        }
+
+        function selectNavLang(code, flag, text) {
+            document.getElementById('navFlagIcon').innerText = flag;
+            document.getElementById('navLangText').innerText = text;
+            closeAllCustomDropdowns();
+            showToast(`Language set to ${text}`, "success");
+        }
+
+        // TABS SWITCHER
         function switchTab(tabId) {
             activeTab = tabId;
             document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -1097,6 +1275,7 @@
             if (targetPage) targetPage.classList.remove('hidden');
         }
 
+        // COUNTDOWN TIMER SYSTEM
         let countdownTimerInterval = null;
         function initCountdown() {
             if (countdownTimerInterval) clearInterval(countdownTimerInterval);
@@ -1181,6 +1360,7 @@
             return `${currencySymbol} ${converted.toLocaleString(undefined, { minimumFractionDigits: currentCurrency === 'IDR' ? 0 : 2, maximumFractionDigits: currentCurrency === 'IDR' ? 0 : 2 })}`;
         }
 
+        // FLIGHT SEARCH ENGINE
         let currentFlightResults = [
             { id: 1, airline: 'Malaysia Airlines', code: 'MH-715', dept: '09:30 AM', arr: '12:35 PM', duration: '3h 05m', price: 640, class: 'Economy', fromCode: 'KUL', toCode: 'DPS' },
             { id: 2, airline: 'AirAsia', code: 'AK-380', dept: '01:15 PM', arr: '04:20 PM', duration: '3h 05m', price: 420, class: 'Economy', fromCode: 'KUL', toCode: 'DPS' },
@@ -1244,13 +1424,15 @@
             else if (to.toLowerCase().includes('bangkok') || toCode === 'BKK') basePrice = 480;
             else if (to.toLowerCase().includes('hanoi') || toCode === 'HAN') basePrice = 520;
             else if (to.toLowerCase().includes('manila') || toCode === 'MNL') basePrice = 590;
+            else if (to.toLowerCase().includes('dili') || toCode === 'DIL') basePrice = 780;
+            else if (to.toLowerCase().includes('brunei') || toCode === 'BWN') basePrice = 410;
             else basePrice = 420 + (to.length * 15);
 
             const cabinMultiplier = cabin === 'business' ? 2.5 : (cabin === 'premium' ? 1.6 : (cabin === 'first' ? 4.0 : 1.0));
             const finalPrice = Math.round(basePrice * cabinMultiplier * adults);
 
             const seaAirlinesList = selectedAirline === 'all' 
-                ? ['Singapore Airlines', 'AirAsia', 'Malaysia Airlines', 'Thai Airways', 'Vietnam Airlines'] 
+                ? ['AirAsia', 'Singapore Airlines', 'Malaysia Airlines', 'Thai Airways', 'Vietnam Airlines', 'Cebu Pacific', 'Garuda Indonesia', 'Royal Brunei', 'Philippine Airlines', 'Batik Air', 'Bangkok Airways']
                 : [selectedAirline, 'AirAsia', 'Garuda Indonesia'];
 
             currentFlightResults = [
@@ -1277,6 +1459,7 @@
             showToast(`Selected ${title} for checkout`, "info");
         }
 
+        // HOTEL SEARCH ENGINE
         function quickSelectHotelLoc(locName) {
             const locInput = document.getElementById('hotelLocation');
             if (locInput) {
@@ -1348,6 +1531,8 @@
             else if (locLower.includes('penang') || locLower.includes('malaysia')) basePrice = 220;
             else if (locLower.includes('hanoi') || locLower.includes('vietnam')) basePrice = 240;
             else if (locLower.includes('siem reap') || locLower.includes('cambodia')) basePrice = 210;
+            else if (locLower.includes('brunei')) basePrice = 360;
+            else if (locLower.includes('dili')) basePrice = 340;
             else basePrice = 270 + (locationInput.length * 8);
 
             const roomMultiplier = rooms * 0.95;
@@ -1394,6 +1579,7 @@
             showToast(`Selected ${title} for booking`, "info");
         }
 
+        // SMART TRANSLATOR & ROMAJI DICTIONARY
         const travelDictionary = {
             "thank you": { ja: "ありがとう", jaRomaji: "A-ri-ga-tou", th: "ขอบคุณ", thRomaji: "Khop Khun", ms: "Terima kasih", msRomaji: "Teh-ree-mah Kah-seh", id: "Terima kasih", idRomaji: "Teh-ree-mah Kah-seh", vi: "Cảm ơn", viRomaji: "Kam On", tl: "Salamat", tlRomaji: "Sah-lah-mat" },
             "thank you very much": { ja: "ありがとうございます", jaRomaji: "A-ri-ga-tou go-zai-ma-su", th: "ขอบคุณมากครับ", thRomaji: "Khop Khun Mak Krap", ms: "Terima kasih banyak", msRomaji: "Teh-ree-mah Kah-seh Bah-nyak", id: "Terima kasih banyak", idRomaji: "Teh-ree-mah Kah-seh Bah-nyak", vi: "Cảm ơn rất nhiều", viRomaji: "Kam On Rat Nhieu", tl: "Maraming salamat", tlRomaji: "Mah-rah-ming Sah-lah-mat" },
@@ -1535,6 +1721,7 @@
             showToast("Translation languages swapped", "info");
         }
 
+        // SPEECH SYNTHESIS AUDIO ENGINE
         let availableVoices = [];
         if ('speechSynthesis' in window) {
             const loadVoices = () => { availableVoices = window.speechSynthesis.getVoices(); };
@@ -1715,6 +1902,7 @@
             showToast("Phrase removed from phrasebook", "info");
         }
 
+        // PAYMENTS ENGINE
         function selectPaymentMethod(method) {
             selectedPaymentMethod = method;
             ['card', 'fpx', 'ewallet', 'qr'].forEach(m => {
@@ -1850,6 +2038,7 @@
             }
         }
 
+        // AUTHENTICATION MODAL & LOGIC
         function openAuthModal() {
             document.getElementById('authModal').classList.remove('hidden');
         }
@@ -2007,17 +2196,6 @@
         function toggleLargeText(enabled) {
             if (enabled) document.body.classList.add('large-text');
             else document.body.classList.remove('large-text');
-        }
-
-        function toggleLangDropdown() {
-            document.getElementById('navLangDropdown').classList.toggle('hidden');
-        }
-
-        function selectNavLang(code, flag, text) {
-            document.getElementById('navFlagIcon').innerText = flag;
-            document.getElementById('navLangText').innerText = text;
-            toggleLangDropdown();
-            showToast(`Language set to ${text}`, "success");
         }
 
         function triggerGlobalSearch(query) {
